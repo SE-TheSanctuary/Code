@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-
+import { Roles } from 'meteor/alanning:roles';
 import { Accounts } from 'meteor/accounts-base';
 import { Bert } from 'meteor/themeteorchef:bert';
 import './validation.js';
@@ -9,12 +9,13 @@ let component;
 const getUserData = () => ({
   email: document.querySelector('[name="emailAddress"]').value,
   password: document.querySelector('[name="password"]').value,
-  userType:document.querySelector('[name="userType"]').value,
+  //roles:document.querySelector('[name="userType"]').value,
   profile: {
     name: {
       first: document.querySelector('[name="firstName"]').value,
       last: document.querySelector('[name="lastName"]').value,
     },
+    roles:document.querySelector('input[name="userType"]:checked').value,
   },
 });
 
@@ -22,7 +23,7 @@ const signup = () => {
   const user = getUserData();
 
 //add id
-  id=Accounts.createUser(user, (error) => {
+  const id=Accounts.createUser(user, (error) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
@@ -31,11 +32,6 @@ const signup = () => {
     }
   });
 
- //  if (userType=="customer") {
- //   // Need _id of existing user record so this call must come
- //   // after `Accounts.createUser` or `Accounts.onCreate`
- //   Roles.addUsersToRoles(id,'customer');
- // }
 
 };
 
