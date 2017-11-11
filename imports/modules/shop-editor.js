@@ -1,35 +1,35 @@
 /* eslint-disable no-undef */
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { upsertDocument } from '../api/documents/methods.js';
+import { upsertShop } from '../api/shops/methods.js';
 import './validation.js';
 
 let component;
 
 const handleUpsert = () => {
   const { doc } = component.props;
-  const confirmation = doc && doc._id ? 'Document updated!' : 'Document added!';
+  const confirmation = doc && doc._id ? 'Shop updated!' : 'Shop added!';
   const upsert = {
-    title: document.querySelector('[name="title"]').value.trim(),
-    body: document.querySelector('[name="body"]').value.trim(),
+    title: shop.querySelector('[name="title"]').value.trim(),
+    body: shop.querySelector('[name="body"]').value.trim(),
     userId:Meteor.userId(),
   };
 
   if (doc && doc._id) upsert._id = doc._id;
 
-  upsertDocument.call(upsert, (error, response) => {
+  upsertShop.call(upsert, (error, response) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
-      component.documentEditorForm.reset();
+      component.shopEditorForm.reset();
       Bert.alert(confirmation, 'success');
-      component.props.history.push(`/documents/${response.insertedId || doc._id}`);
+      component.props.history.push(`/shops/${response.insertedId || doc._id}`);
     }
   });
 };
 
 const validate = () => {
-  $(component.documentEditorForm).validate({
+  $(component.shopEditorForm).validate({
     rules: {
       title: {
         required: true,
@@ -56,7 +56,7 @@ const validate = () => {
   });
 };
 
-export default function documentEditor(options) {
+export default function shopEditor(options) {
   component = options.component;
   validate();
 }
