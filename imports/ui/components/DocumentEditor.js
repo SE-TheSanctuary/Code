@@ -26,6 +26,15 @@ export default class DocumentEditor extends React.Component {
         />
       </FormGroup>
       <FormGroup>
+        <ControlLabel>Sex</ControlLabel>
+        <FormControl
+          type="text"
+          name="sex"
+          defaultValue={ doc && doc.sex }
+          placeholder="Oh, The Places You'll Go!"  //here
+        />
+      </FormGroup>
+      <FormGroup>
         <ControlLabel>Body</ControlLabel>
         <FormControl
           componentClass="textarea"

@@ -12,6 +12,7 @@ const handleUpsert = () => {
   const upsert = {
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
+    sex: document.querySelector('[name="sex"]').value.trim(), //here
   };
 
   if (doc && doc._id) upsert._id = doc._id;
@@ -36,6 +37,9 @@ const validate = () => {
       body: {
         required: true,
       },
+      sex: {
+        required: true,
+      }, //here
     },
     messages: {
       title: {
@@ -44,6 +48,9 @@ const validate = () => {
       body: {
         required: 'This thneeds a body, please.',
       },
+      sex: {
+        required: 'This thneeds a body, please.',
+      }, //here
     },
     submitHandler() { handleUpsert(); },
   });

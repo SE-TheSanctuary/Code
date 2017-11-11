@@ -26,6 +26,10 @@ Documents.schema = new SimpleSchema({
     type: String,
     label: 'The body of the document.',
   },
+  sex: {
+    type: String,
+    label: 'The sex of the document.', //here
+  },
 });
 
 Documents.attachSchema(Documents.schema);
@@ -33,4 +37,5 @@ Documents.attachSchema(Documents.schema);
 Factory.define('document', Documents, {
   title: () => 'Factory Title',
   body: () => 'Factory Body',
+  sex: () => 'Factory Sex', //here
 });
