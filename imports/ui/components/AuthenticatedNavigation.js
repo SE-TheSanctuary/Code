@@ -22,9 +22,6 @@ const AuthenticatedNavigation = () => (
     <div>
       <Nav>
         <li>
-          <NavLink to="/documents">Documents</NavLink>
-        </li>
-        <li>
           <NavLink to="/shops">Shops</NavLink>
         </li>
       </Nav>
@@ -37,7 +34,7 @@ const AuthenticatedNavigation = () => (
     <div>
       <Nav>
         <li>
-          <NavLink to="/documents">Documents</NavLink>
+          <NavLink to="/documents">My Pets</NavLink>
         </li>
       </Nav>
       <Nav pullRight>
