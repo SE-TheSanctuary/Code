@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-
+import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { upsertDocument } from '../api/documents/methods.js';
 import './validation.js';
@@ -12,7 +12,8 @@ const handleUpsert = () => {
   const upsert = {
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
-    sex: document.querySelector('[name="sex"]').value.trim(), //here
+    //sex: document.querySelector('[name="sex"]').value.trim(), //here
+    userId:Meteor.userId(),
   };
 
   if (doc && doc._id) upsert._id = doc._id;
@@ -37,7 +38,7 @@ const validate = () => {
       body: {
         required: true,
       },
-      sex: {
+      userId: {
         required: true,
       }, //here
     },
@@ -48,7 +49,7 @@ const validate = () => {
       body: {
         required: 'This thneeds a body, please.',
       },
-      sex: {
+      userId: {
         required: 'This thneeds a body, please.',
       }, //here
     },

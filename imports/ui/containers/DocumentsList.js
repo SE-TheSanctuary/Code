@@ -7,7 +7,11 @@ import Loading from '../components/Loading.js';
 const composer = (params, onData) => {
   const subscription = Meteor.subscribe('documents.list');
   if (subscription.ready()) {
-    const documents = Documents.find().fetch();
+    //return array of object that have same userId
+    const documents = Documents.find({userId:Meteor.userId()}).map(function (doc) {
+      return doc;
+    })
+    console.log(documents);
     onData(null, { documents });
   }
 };

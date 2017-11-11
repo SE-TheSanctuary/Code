@@ -38,7 +38,8 @@ const ViewDocument = ({ doc, history }) => {
           </ButtonGroup>
         </ButtonToolbar>
       </div>
-      { doc && doc.body }
+      { doc && doc.body }<br/>
+      { doc && doc.userId }
     </div>
   ) : <NotFound />;
 };
