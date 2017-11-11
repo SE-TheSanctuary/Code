@@ -12,6 +12,7 @@ const handleUpsert = () => {
   const upsert = {
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
+    //sex: document.querySelector('[name="sex"]').value.trim(), //here
     userId:Meteor.userId(),
   };
 

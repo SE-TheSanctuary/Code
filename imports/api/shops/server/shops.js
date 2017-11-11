@@ -26,9 +26,9 @@ Shops.schema = new SimpleSchema({
     type: String,
     label: 'The body of the document.',
   },
-  userId: {
+  sex: {
     type: String,
-    label: 'The userId of the document.', //here
+    label: 'The sex of the document.', //here
   },
 });
 
@@ -37,5 +37,5 @@ Shops.attachSchema(Shops.schema);
 Factory.define('shop', Shops, {
   title: () => 'Factory Title',
   body: () => 'Factory Body',
-  userId: () => 'Factory userId', //here
+  sex: () => 'Factory Sex', //here
 });
