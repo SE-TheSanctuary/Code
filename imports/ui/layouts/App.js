@@ -8,6 +8,7 @@ import Authenticated from '../pages/Authenticated';
 import AppNavigation from '../components/AppNavigation';
 import Index from '../pages/Index';
 import Documents from '../pages/Documents';
+import Shops from '../pages/Shops';
 import NewDocument from '../pages/NewDocument';
 import EditDocument from '../containers/EditDocument';
 import ViewDocument from '../containers/ViewDocument';
@@ -28,6 +29,7 @@ const App = appProps => (
           <Authenticated exact path="/documents/new" component={NewDocument} {...appProps} />
           <Authenticated exact path="/documents/:_id" component={ViewDocument} {...appProps} />
           <Authenticated exact path="/documents/:_id/edit" component={EditDocument} {...appProps} />
+          <Authenticated exact path="/shops" component={Shops} {...appProps} />
           <Public path="/signup" component={Signup} {...appProps} />
           <Public path="/login" component={Login} {...appProps} />
           <Route name="recover-password" path="/recover-password" component={RecoverPassword} />
