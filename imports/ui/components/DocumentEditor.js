@@ -29,8 +29,8 @@ export default class DocumentEditor extends React.Component {
         <ControlLabel>Sex</ControlLabel>
         <FormControl
           type="text"
-          name="sex"
-          defaultValue={ doc && doc.sex }
+          name="userId"
+          defaultValue={ doc && doc.userId }
           placeholder="Oh, The Places You'll Go!"  //here
         />
       </FormGroup>

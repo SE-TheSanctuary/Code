@@ -8,12 +8,12 @@ const Documents = ({ history }) => (
     <Row>
       <Col xs={ 12 }>
         <div className="page-header clearfix">
-          <h4 className="pull-left">Documents</h4>
+          <h4 className="pull-left">My Pet</h4>
           <Link to="/documents/new">
             <Button
               bsStyle="success"
               className="pull-right"
-            >New Document</Button>
+            >Add new pet</Button>
           </Link>
         </div>
         <DocumentsList history={history} />
