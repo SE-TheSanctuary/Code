@@ -8,12 +8,13 @@ let component;
 
 const handleUpsert = () => {
   const { doc } = component.props;
-  const confirmation = doc && doc._id ? 'Document updated!' : 'Document added!';
+  const confirmation = doc && doc._id ? 'Document updated!' : 'New pet added!';
   const upsert = {
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
     breed:document.querySelector('[name="breed"]').value.trim(),
     //sex: document.querySelector('[name="sex"]').value.trim(), //here
+    petType:document.querySelector('[name="petType"]').value.trim(),
     userId:Meteor.userId(),
   };
 

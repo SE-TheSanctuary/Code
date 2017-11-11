@@ -4,9 +4,23 @@ import { Row, Col,FormGroup, ControlLabel, FormControl, Button ,DropdownButton,M
 import documentEditor from '../../modules/document-editor.js';
 
 export default class DocumentEditor extends React.Component {
+  constructor(props){
+    super(props)
+    this.handleDropdown = this.handleDropdown.bind(this)
+    this.state = {
+      dropDownValue: "dog"
+    }
+  }
+
   componentDidMount() {
     documentEditor({ component: this });
     setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
+  }
+
+  handleDropdown(e){
+    this.setState({
+        dropDownValue: e
+    });
   }
 
   render() {
@@ -33,12 +47,14 @@ export default class DocumentEditor extends React.Component {
               </Row>
               <Row>
                 <Col xs={ 12 } sm={ 12 }>
-                  <FormGroup>
-                    <ControlLabel>Types of Pet</ControlLabel><br/>
-                    <DropdownButton title="pet type" id="dropdown-pet-type">
-                          <MenuItem eventKey="1">dog</MenuItem>
-                          <MenuItem eventKey="2">cat</MenuItem>
-                    </DropdownButton>
+                <FormGroup controlId="formControlsSelect">
+                  <ControlLabel>Select</ControlLabel>
+                  <FormControl componentClass="select" name="petType" placeholder="dog">
+                    <option value="dog">dog</option>
+                    <option value="cat">cat</option>
+                    <option value="bird">bird</option>
+                    <option value="other">other</option>
+                  </FormControl>
                   </FormGroup>
                 </Col>
               </Row>

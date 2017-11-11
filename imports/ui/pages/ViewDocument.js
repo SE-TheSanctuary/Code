@@ -39,6 +39,7 @@ const ViewDocument = ({ doc, history }) => {
         </ButtonToolbar>
       </div>
       breed    :{ doc && doc.breed }<br/>
+      petType  :{ doc && doc.petType }<br/>
       userID   :{ doc && doc.userId }<br/>
       optional :{ doc && doc.body }<br/>
     </div>
