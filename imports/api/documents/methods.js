@@ -10,6 +10,7 @@ export const upsertDocument = new ValidatedMethod({
     title: { type: String, optional: true },
     body: { type: String, optional: true },
     userId: { type: String, optional: true },
+    breed:{ type: String, optional: true },
   }).validator(),
   run(document) {
     return Documents.upsert({ _id: document._id }, { $set: document });

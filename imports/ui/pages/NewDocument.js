@@ -3,7 +3,7 @@ import DocumentEditor from '../components/DocumentEditor.js';
 
 const NewDocument = ({ history }) => (
   <div className="NewDocument">
-    <h4 className="page-header">New Document</h4>
+    <h4 className="page-header">New Pet</h4>
     <DocumentEditor history={history} />
   </div>
 );

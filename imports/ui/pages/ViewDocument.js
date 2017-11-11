@@ -25,7 +25,7 @@ const ViewDocument = ({ doc, history }) => {
   return doc ? (
     <div className="ViewDocument">
       <div className="page-header clearfix">
-        <h4 className="pull-left">{ doc && doc.title }</h4>
+        <h4 className="pull-left">PetName:{ doc && doc.title }</h4>
         <ButtonToolbar className="pull-right">
           <ButtonGroup bsSize="small">
             <Button
@@ -38,8 +38,9 @@ const ViewDocument = ({ doc, history }) => {
           </ButtonGroup>
         </ButtonToolbar>
       </div>
-      { doc && doc.body }<br/>
-      { doc && doc.userId }
+      breed    :{ doc && doc.breed }<br/>
+      userID   :{ doc && doc.userId }<br/>
+      optional :{ doc && doc.body }<br/>
     </div>
   ) : <NotFound />;
 };

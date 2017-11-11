@@ -30,6 +30,10 @@ Documents.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
+  breed: {
+    type: String,
+    label: 'The breed of the pet.', //here
+  },
 });
 
 Documents.attachSchema(Documents.schema);
@@ -38,4 +42,5 @@ Factory.define('document', Documents, {
   title: () => 'Factory Title',
   body: () => 'Factory Body',
   userId: () => 'Factory userId', //here
+  breed: () => 'Factory breed', //here
 });
