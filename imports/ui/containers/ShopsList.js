@@ -8,7 +8,7 @@ const composer = (params, onData) => {
   const subscription = Meteor.subscribe('shops.list');
   if (subscription.ready()) {
     //return array of object that have same userId
-    const shops = Shops.find().fetch();
+    const shops = Shops.find({}, {sort: {date: -1}}).fetch();
     console.log(shops);
     onData(null, { shops });
   }

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { removeShop } from '../../api/shops/shops';
+import { removeShop } from '../../api/shops/methods';
 import NotFound from './NotFound';
 import { Meteor } from 'meteor/meteor';
 
