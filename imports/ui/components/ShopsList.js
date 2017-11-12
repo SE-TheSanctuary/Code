@@ -11,7 +11,7 @@ const ShopsList = ({ history, shops }) => (
       <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
         <Row>
           <Col xs={ 2 } sm={ 1 }>
-            <img class="img-responsive"  height="80"  src="/Shop-icon.png" width="80" />
+            <Image src="/Shop-icon.png" responsive />
           </Col>
           <Col xs={ 10 } sm={ 11 }>
             <b>{ title }</b><br/>
