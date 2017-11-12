@@ -36,6 +36,9 @@ const AuthenticatedNavigation = () => (
         <li>
           <NavLink to="/documents">My Pets</NavLink>
         </li>
+        <li>
+          <NavLink to="/shopping">Go Shopping</NavLink>
+        </li>
       </Nav>
       <Nav pullRight>
         <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
