@@ -34,10 +34,6 @@ Documents.schema = new SimpleSchema({
     type: String,
     label: 'The breed of the pet.', //here
   },
-  petType: {
-    type: String,
-    label: 'The type of the pet.', //here
-  },
 });
 
 Documents.attachSchema(Documents.schema);
@@ -47,5 +43,4 @@ Factory.define('document', Documents, {
   body: () => 'Factory Body',
   userId: () => 'Factory userId', //here
   breed: () => 'Factory breed', //here
-  petType: () => 'Factory breed', //here
 });
