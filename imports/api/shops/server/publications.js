@@ -1,10 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import Documents from '../documents';
 
-Meteor.publish('documents.list', () => Documents.find());
+import Shops from '../shops';
 
-Meteor.publish('documents.view', (_id) => {
+Meteor.publish('shops.list', () => Shops.find());
+
+Meteor.publish('shops.view', (_id) => {
   check(_id, String);
-  return Documents.find(_id);
+  return Shops.find(_id);
+
 });

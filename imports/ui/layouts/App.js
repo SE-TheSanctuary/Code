@@ -7,10 +7,19 @@ import Public from '../pages/Public';
 import Authenticated from '../pages/Authenticated';
 import AppNavigation from '../components/AppNavigation';
 import Index from '../pages/Index';
+
 import Documents from '../pages/Documents';
 import NewDocument from '../pages/NewDocument';
 import EditDocument from '../containers/EditDocument';
 import ViewDocument from '../containers/ViewDocument';
+
+import Shops from '../pages/Shops';
+import NewShop from '../pages/NewShop';
+import EditShop from '../containers/EditShop';
+import ViewShop from '../containers/ViewShop';
+
+import Shopping from '../pages/Shopping';
+
 import Login from '../pages/Login';
 import RecoverPassword from '../pages/RecoverPassword';
 import ResetPassword from '../pages/ResetPassword';
@@ -28,6 +37,11 @@ const App = appProps => (
           <Authenticated exact path="/documents/new" component={NewDocument} {...appProps} />
           <Authenticated exact path="/documents/:_id" component={ViewDocument} {...appProps} />
           <Authenticated exact path="/documents/:_id/edit" component={EditDocument} {...appProps} />
+          <Authenticated exact path="/shops" component={Shops} {...appProps} />
+          <Authenticated exact path="/shops/new" component={NewShop} {...appProps} />
+          <Authenticated exact path="/shops/:_id" component={ViewShop} {...appProps} />
+          <Authenticated exact path="/shops/:_id/edit" component={EditShop} {...appProps} />
+          <Authenticated exact path="/shopping" component={Shopping} {...appProps} />
           <Public path="/signup" component={Signup} {...appProps} />
           <Public path="/login" component={Login} {...appProps} />
           <Route name="recover-password" path="/recover-password" component={RecoverPassword} />

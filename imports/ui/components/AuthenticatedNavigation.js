@@ -11,19 +11,41 @@ const userName = () => {
   return user ? `${name.first} ${name.last}` : '';
 };
 
+const userRole = () => {
+  const user = Meteor.user();
+  const profile = user ? user.profile : '';
+  return user ? `${profile.roles}` : '';
+};
+
 const AuthenticatedNavigation = () => (
-  <div>
-    <Nav>
-      <li>
-        <NavLink to="/documents">My Pet</NavLink>
-      </li>
-    </Nav>
-    <Nav pullRight>
-      <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
-        <MenuItem eventKey={ 3.1 } onClick={ handleLogout }>Logout</MenuItem>
-      </NavDropdown>
-    </Nav>
-  </div>
+  userRole() == 'shopOwner' ?
+    <div>
+      <Nav>
+        <li>
+          <NavLink to="/shops">Shops</NavLink>
+        </li>
+      </Nav>
+      <Nav pullRight>
+        <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
+          <MenuItem eventKey={ 3.1 } onClick={ handleLogout }>Logout</MenuItem>
+        </NavDropdown>
+      </Nav>
+    </div> :
+    <div>
+      <Nav>
+        <li>
+          <NavLink to="/documents">My Pets</NavLink>
+        </li>
+        <li>
+          <NavLink to="/shopping">Go Shopping</NavLink>
+        </li>
+      </Nav>
+      <Nav pullRight>
+        <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
+          <MenuItem eventKey={ 3.1 } onClick={ handleLogout }>Logout</MenuItem>
+        </NavDropdown>
+      </Nav>
+    </div>
 );
 
 export default AuthenticatedNavigation;
