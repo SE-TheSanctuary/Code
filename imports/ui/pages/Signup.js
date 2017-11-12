@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Row, Col, FormGroup, ControlLabel, FormControl, Button,Jumbotron,Image } from 'react-bootstrap';
 import handleSignup from '../../modules/signup';
+
+//<img border="0" height="640" hspace="0" src="/apple-touch-icon-precomposed.png" width="800" />
 
 export default class Signup extends React.Component {
   componentDidMount() {
