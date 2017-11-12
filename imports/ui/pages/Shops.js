@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
-import ShopsList from '../containers/ShopsList.js';
+import MyShopsList from '../containers/MyShopsList.js';
 
 const Shops = ({ history }) => (
   <div className="Documents">
@@ -16,7 +16,7 @@ const Shops = ({ history }) => (
             >Add new shop</Button>
           </Link>
         </div>
-        <ShopsList history={history} />
+        <MyShopsList history={history} />
       </Col>
     </Row>
   </div>
