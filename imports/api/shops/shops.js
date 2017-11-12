@@ -30,6 +30,10 @@ Shops.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
+  date: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
 });
 
 Shops.attachSchema(Shops.schema);
@@ -37,5 +41,6 @@ Shops.attachSchema(Shops.schema);
 Factory.define('shop', Shops, {
   title: () => 'Factory Title',
   body: () => 'Factory Body',
-  userId: () => 'Factory userId', //here
+  userId: () => 'Factory userId',
+  date: () => 'Factory creationDate', //here
 });

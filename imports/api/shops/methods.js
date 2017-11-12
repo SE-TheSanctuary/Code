@@ -12,7 +12,7 @@ export const upsertShop = new ValidatedMethod({
     title: { type: String, optional: true },
     body: { type: String, optional: true },
     userId: { type: String, optional: true },
-
+    date: { type: String, optional: true },
   }).validator(),
   run(shop) {
     return Shops.upsert({ _id: shop._id }, { $set: shop });

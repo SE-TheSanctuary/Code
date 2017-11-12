@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { upsertShop } from '../api/shops/methods.js';
@@ -13,6 +14,7 @@ const handleUpsert = () => {
     title: document.querySelector('[name="title"]').value.trim(),
     body: document.querySelector('[name="body"]').value.trim(),
     userId:Meteor.userId(),
+    date: new Date().toISOString(),
   };
 
   if (doc && doc._id) upsert._id = doc._id;
@@ -40,6 +42,9 @@ const validate = () => {
       userId: {
         required: true,
       }, //here
+      date: {
+        required: true,
+      },
     },
     messages: {
       title: {
@@ -51,6 +56,9 @@ const validate = () => {
       userId: {
         required: 'This thneeds a body, please.',
       }, //here
+      date: {
+        required: 'This thneeds a body, please.',
+      },
     },
     submitHandler() { handleUpsert(); },
   });
