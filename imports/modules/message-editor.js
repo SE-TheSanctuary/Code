@@ -2,36 +2,36 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { upsertShop } from '../api/shops/methods.js';
+import { upsertMessage } from '../api/messages/methods.js';
 import './validation.js';
 
 let component;
 
 const handleUpsert = () => {
   const { doc } = component.props;
-  const confirmation = doc && doc._id ? 'Shop updated!' : 'Shop added!';
+  const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
   const upsert = {
-    title: shop.querySelector('[name="title"]').value.trim(),
-    body: shop.querySelector('[name="body"]').value.trim(),
+    title: message.querySelector('[name="title"]').value.trim(),
+    body: message.querySelector('[name="body"]').value.trim(),
     userId:Meteor.userId(),
     date: new Date().toISOString(),
   };
 
   if (doc && doc._id) upsert._id = doc._id;
 
-  upsertShop.call(upsert, (error, response) => {
+  upsertMessage.call(upsert, (error, response) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
-      component.shopEditorForm.reset();
+      component.messageEditorForm.reset();
       Bert.alert(confirmation, 'success');
-      component.props.history.push(`/shops/${response.insertedId || doc._id}`);
+      component.props.history.push(`/messages/${response.insertedId || doc._id}`);
     }
   });
 };
 
 const validate = () => {
-  $(component.shopEditorForm).validate({
+  $(component.messageEditorForm).validate({
     rules: {
       title: {
         required: true,
@@ -64,7 +64,7 @@ const validate = () => {
   });
 };
 
-export default function shopEditor(options) {
+export default function messageEditor(options) {
   component = options.component;
   validate();
 }
