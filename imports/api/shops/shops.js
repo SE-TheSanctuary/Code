@@ -22,9 +22,13 @@ Shops.schema = new SimpleSchema({
     type: String,
     label: 'The title of the document.',
   },
-  body: {
+  detail1: {
     type: String,
-    label: 'The body of the document.',
+    label: 'The detail1 of the document.',
+  },
+  detail2: {
+    type: String,
+    label: 'The detail2 of the document.',
   },
   userId: {
     type: String,
@@ -40,7 +44,8 @@ Shops.attachSchema(Shops.schema);
 
 Factory.define('shop', Shops, {
   title: () => 'Factory Title',
-  body: () => 'Factory Body',
+  detail1: () => 'Factory detail1',
+  detail2: () => 'Factory detail2',
   userId: () => 'Factory userId',
   date: () => 'Factory creationDate', //here
 });

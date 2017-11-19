@@ -57,8 +57,10 @@ const ViewShop = ({ doc, history }) => {
             </ButtonGroup>
           </ButtonToolbar>
         </div>
-        { doc && doc.body }<br/>
-        { doc && doc.userId }
+        shopName: { doc && doc.title }<br/>
+        shopOwnerId: { doc && doc.userId }<br/>
+        shopDetail1: { doc && doc.detail1 }<br/>
+        shopDetail2: { doc && doc.detail2 }
       </div> :
       <div className="ViewShop">
         <div className="page-header clearfix">
@@ -71,8 +73,10 @@ const ViewShop = ({ doc, history }) => {
           >send message</Button>
         </Link>
         </div>
-        { doc && doc.body }<br/>
-        { doc && doc.userId }
+        shopName: { doc && doc.title }<br/>
+        shopOwnerId: { doc && doc.userId }<br/>
+        shopDetail1: { doc && doc.detail1 }<br/>
+        shopDetail2: { doc && doc.detail2 }
       </div>
   ) : <NotFound />;
 };
