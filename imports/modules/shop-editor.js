@@ -11,8 +11,8 @@ const handleUpsert = () => {
   const { doc } = component.props;
   const confirmation = doc && doc._id ? 'Shop updated!' : 'Shop added!';
   const upsert = {
-    title: shop.querySelector('[name="title"]').value.trim(),
-    body: shop.querySelector('[name="body"]').value.trim(),
+    title: document.querySelector('[name="title"]').value.trim(),
+    body: document.querySelector('[name="body"]').value.trim(),
     userId:Meteor.userId(),
     date: new Date().toISOString(),
   };
