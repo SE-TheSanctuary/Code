@@ -20,6 +20,11 @@ import ViewShop from '../containers/ViewShop';
 
 import Shopping from '../pages/Shopping';
 
+import Messages from '../pages/Messages';
+import NewMessage from '../pages/NewMessage';
+import EditMessage from '../containers/EditMessage';
+import ViewMessage from '../containers/ViewMessage';
+
 import Login from '../pages/Login';
 import RecoverPassword from '../pages/RecoverPassword';
 import ResetPassword from '../pages/ResetPassword';
@@ -42,6 +47,10 @@ const App = appProps => (
           <Authenticated exact path="/shops/:_id" component={ViewShop} {...appProps} />
           <Authenticated exact path="/shops/:_id/edit" component={EditShop} {...appProps} />
           <Authenticated exact path="/shopping" component={Shopping} {...appProps} />
+          <Authenticated exact path="/messages" component={Messages} {...appProps} />
+          <Authenticated exact path="/messages/new" component={NewMessage} {...appProps} />
+          <Authenticated exact path="/messages/:_id" component={ViewMessage} {...appProps} />
+          <Authenticated exact path="/messages/:_id/edit" component={EditMessage} {...appProps} />
           <Public path="/signup" component={Signup} {...appProps} />
           <Public path="/login" component={Login} {...appProps} />
           <Route name="recover-password" path="/recover-password" component={RecoverPassword} />

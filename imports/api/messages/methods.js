@@ -13,6 +13,7 @@ export const upsertMessage = new ValidatedMethod({
     body: { type: String, optional: true },
     userId: { type: String, optional: true },
     date: { type: String, optional: true },
+    receiveId: { type: String, optional: true },
   }).validator(),
   run(message) {
     return Messages.upsert({ _id: message._id }, { $set: message });

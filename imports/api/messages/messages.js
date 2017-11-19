@@ -34,6 +34,10 @@ Messages.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
+  receiveId: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
 });
 
 Messages.attachSchema(Messages.schema);
@@ -43,4 +47,5 @@ Factory.define('message', Messages, {
   body: () => 'Factory Body',
   userId: () => 'Factory userId',
   date: () => 'Factory creationDate', //here
+  receiveId: () => 'Factory receiveId', //here
 });

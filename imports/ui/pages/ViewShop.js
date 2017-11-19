@@ -4,6 +4,9 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { removeShop } from '../../api/shops/methods';
 import NotFound from './NotFound';
 import { Meteor } from 'meteor/meteor';
+import MessagesList from '../containers/MessagesList.js';
+import { Link } from 'react-router-dom';
+
 
 const handleEdit = (history, _id) => {
   history.push(`/shops/${_id}/edit`);
@@ -22,12 +25,21 @@ const handleRemove = (history, _id) => {
   }
 };
 
+const handleSendMessage = (userId) => {
+  console.log("send");
+  console.log(userId);
+  receiveId = userId;
+  console.log(receiveId);
+};
+
 const userID = () => {
   const user = Meteor.user();
   return user ? `${user._id}` : '';
 };
 
 const ViewShop = ({ doc, history }) => {
+  console.log("ViewShop");
+  console.log(doc.userId);
   return doc ? (
     userID() == doc.userId ?
       <div className="ViewShop">
@@ -50,7 +62,14 @@ const ViewShop = ({ doc, history }) => {
       </div> :
       <div className="ViewShop">
         <div className="page-header clearfix">
-          <h4 className="pull-left">{ doc && doc.title }</h4>
+        <h4 className="pull-left">My Message</h4>
+        <Link to="/messages/new">
+          <Button
+            onClick={() => handleSendMessage(doc.userId)}
+            bsStyle="success"
+            className="pull-right"
+          >send message</Button>
+        </Link>
         </div>
         { doc && doc.body }<br/>
         { doc && doc.userId }
@@ -61,6 +80,7 @@ const ViewShop = ({ doc, history }) => {
 ViewShop.propTypes = {
   doc: PropTypes.object,
   history: PropTypes.object,
+  receiveId: PropTypes.object,
 };
 
 export default ViewShop;

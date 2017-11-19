@@ -15,6 +15,7 @@ const handleUpsert = () => {
     body: document.querySelector('[name="body"]').value.trim(),
     userId:Meteor.userId(),
     date: new Date().toISOString(),
+    receiveId: receiveId,
   };
 
   if (doc && doc._id) upsert._id = doc._id;
@@ -45,6 +46,9 @@ const validate = () => {
       date: {
         required: true,
       },
+      receiveId: {
+        required: true,
+      },
     },
     messages: {
       title: {
@@ -57,6 +61,9 @@ const validate = () => {
         required: 'This thneeds a body, please.',
       }, //here
       date: {
+        required: 'This thneeds a body, please.',
+      },
+      receiveId: {
         required: 'This thneeds a body, please.',
       },
     },
