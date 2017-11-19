@@ -7,7 +7,7 @@ import shopEditor from '../../modules/shop-editor.js';
 export default class ShopEditor extends React.Component {
   componentDidMount() {
     shopEditor({ component: this });
-    setTimeout(() => { shop.querySelector('[name="title"]').focus(); }, 0);
+    setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
   }
 
   render() {

@@ -14,6 +14,7 @@ class Login extends React.Component {
 
 
   render() {
+    const receiveId = " ";
     return (
       <div className="Login">
         <Row>

@@ -7,17 +7,24 @@ import messageEditor from '../../modules/message-editor.js';
 export default class MessageEditor extends React.Component {
   componentDidMount() {
     messageEditor({ component: this });
-    setTimeout(() => { message.querySelector('[name="title"]').focus(); }, 0);
+    setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
   }
+
+  // constructor(){
+  //   super();
+  //   this.state = {receiveId : " "};
+  // }
 
   render() {
     const { doc } = this.props;
+    console.log("Message editor");
+    console.log(receiveId);
     return (<form
       ref={ form => (this.messageEditorForm = form) }
       onSubmit={ event => event.preventDefault() }
     >
       <FormGroup>
-        <ControlLabel>message name</ControlLabel>
+        <ControlLabel>Message name</ControlLabel>
         <FormControl
           type="text"
           name="title"

@@ -5,7 +5,7 @@ const handleNav = (history, _id) => {
   history.push(`/messages/${_id}`);
 };
 
-const MessagesList = ({ history, documents }) => (
+const MessagesList = ({ history, messages }) => (
   messages.length > 0 ? <ListGroup className="MessagesList">
     {messages.map(({ _id, title }) => (
       <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
