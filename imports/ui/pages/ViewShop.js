@@ -45,15 +45,19 @@ const ViewShop = ({ doc, history }) => {
             </ButtonGroup>
           </ButtonToolbar>
         </div>
-        { doc && doc.body }<br/>
-        { doc && doc.userId }
+        shopName: { doc && doc.title }<br/>
+        shopOwnerId: { doc && doc.userId }<br/>
+        shopDetail1: { doc && doc.detail1 }<br/>
+        shopDetail2: { doc && doc.detail2 }
       </div> :
       <div className="ViewShop">
         <div className="page-header clearfix">
           <h4 className="pull-left">{ doc && doc.title }</h4>
         </div>
-        { doc && doc.body }<br/>
-        { doc && doc.userId }
+        shopName: { doc && doc.title }<br/>
+        shopOwnerId: { doc && doc.userId }<br/>
+        shopDetail1: { doc && doc.detail1 }<br/>
+        shopDetail2: { doc && doc.detail2 }
       </div>
   ) : <NotFound />;
 };

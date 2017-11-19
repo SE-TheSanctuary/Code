@@ -6,13 +6,14 @@ import { upsertShop } from '../api/shops/methods.js';
 import './validation.js';
 
 let component;
-
+//
 const handleUpsert = () => {
   const { doc } = component.props;
   const confirmation = doc && doc._id ? 'Shop updated!' : 'Shop added!';
   const upsert = {
     title: document.querySelector('[name="title"]').value.trim(),
-    body: document.querySelector('[name="body"]').value.trim(),
+    detail1: document.querySelector('[name="detail1"]').value.trim(),
+    detail2: document.querySelector('[name="detail2"]').value.trim(),
     userId:Meteor.userId(),
     date: new Date().toISOString(),
   };
@@ -36,7 +37,10 @@ const validate = () => {
       title: {
         required: true,
       },
-      body: {
+      detail1: {
+        required: true,
+      },
+      detail2: {
         required: true,
       },
       userId: {
@@ -50,7 +54,10 @@ const validate = () => {
       title: {
         required: 'Need a title in here, Seuss.',
       },
-      body: {
+      detail1: {
+        required: 'This thneeds a body, please.',
+      },
+      detail2: {
         required: 'This thneeds a body, please.',
       },
       userId: {

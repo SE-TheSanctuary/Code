@@ -29,8 +29,8 @@ export default class ShopEditor extends React.Component {
         <ControlLabel>Detail</ControlLabel>
         <FormControl
           type="text"
-          name="userId"
-          defaultValue={ doc && doc.userId }
+          name="detail1"
+          defaultValue={ doc && doc.detail1 }
           placeholder="Oh, The Places You'll Go!"  //here
         />
       </FormGroup>
@@ -38,8 +38,8 @@ export default class ShopEditor extends React.Component {
         <ControlLabel>Detail</ControlLabel>
         <FormControl
           componentClass="textarea"
-          name="body"
-          defaultValue={ doc && doc.body }
+          name="detail2"
+          defaultValue={ doc && doc.detail2 }
           placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
         />
       </FormGroup>
