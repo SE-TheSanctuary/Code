@@ -1,9 +1,21 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes ,Component} from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Button,InputGroup,FormGroup,FormControl,Glyphicon,ControlLabel} from 'react-bootstrap';
 import ShopsList from '../containers/ShopsList.js';
+import { Meteor } from 'meteor/meteor';
+
+const handleTest = (history) => {
+  //console.log('get value form',document.querySelector('[name="sort"]').value)
+  sortKey=document.querySelector('[name="sort"]').value;
+  filterKey=document.querySelector('[name="filter"]').value;
+  console.log('filterKey',filterKey)
+  console.log('sortKey',sortKey)
+  history.push(`/shopping`);
+};
+
 
 const Shops = ({ history }) => (
+
   <div className="Documents">
     <Row>
         <div className="page-header clearfix">
@@ -41,7 +53,7 @@ const Shops = ({ history }) => (
                 <InputGroup>
                     <FormControl type="text" />
                     <InputGroup.Button>
-                      <Button>Search</Button>
+                      <Button onClick={() => handleTest(history)}>Search</Button>
                     </InputGroup.Button>
                   </InputGroup>
                 </FormGroup>
@@ -58,6 +70,7 @@ const Shops = ({ history }) => (
 
 Shops.propTypes = {
   history: PropTypes.object,
+  filterKey: PropTypes.string,
 };
 
 export default Shops;

@@ -11,7 +11,7 @@ export default class DocumentEditor extends React.Component {
       dropDownValue: "dog"
     }
   }
-
+//
   componentDidMount() {
     documentEditor({ component: this });
     setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);

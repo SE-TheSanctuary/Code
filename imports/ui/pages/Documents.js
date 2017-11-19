@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
 import DocumentsList from '../containers/DocumentsList.js';
 
+
 const Documents = ({ history }) => (
   <div className="Documents">
     <Row>
