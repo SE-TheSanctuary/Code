@@ -25,6 +25,15 @@ export default class ShopEditor extends React.Component {
           placeholder="Oh, The Places You'll Go!"
         />
       </FormGroup>
+      <FormGroup controlId="formControlsSelect">
+        <ControlLabel>Select</ControlLabel>
+        <FormControl componentClass="select" name="petType" placeholder="all">
+          <option value="all">all</option>
+          <option value="dog">dog</option>
+          <option value="cat">cat</option>
+          <option value="bird">bird</option>
+        </FormControl>
+        </FormGroup>
       <FormGroup>
         <ControlLabel>Detail</ControlLabel>
         <FormControl
