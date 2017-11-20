@@ -25,6 +25,11 @@ import NewMessage from '../pages/NewMessage';
 import EditMessage from '../containers/EditMessage';
 import ViewMessage from '../containers/ViewMessage';
 
+import Bookings from '../pages/Bookings';
+import NewBooking from '../pages/NewBooking';
+import EditBooking from '../containers/EditBooking';
+import ViewBooking from '../containers/ViewBooking';
+
 import Login from '../pages/Login';
 import RecoverPassword from '../pages/RecoverPassword';
 import ResetPassword from '../pages/ResetPassword';
@@ -51,6 +56,10 @@ const App = appProps => (
           <Authenticated exact path="/messages/new" component={NewMessage} {...appProps} />
           <Authenticated exact path="/messages/:_id" component={ViewMessage} {...appProps} />
           <Authenticated exact path="/messages/:_id/edit" component={EditMessage} {...appProps} />
+          <Authenticated exact path="/bookings" component={Bookings} {...appProps} />
+          <Authenticated exact path="/bookings/new" component={NewBooking} {...appProps} />
+          <Authenticated exact path="/bookings/:_id" component={ViewBooking} {...appProps} />
+          <Authenticated exact path="/bookings/:_id/edit" component={EditBooking} {...appProps} />
           <Public path="/signup" component={Signup} {...appProps} />
           <Public path="/login" component={Login} {...appProps} />
           <Route name="recover-password" path="/recover-password" component={RecoverPassword} />

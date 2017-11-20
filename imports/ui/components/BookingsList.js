@@ -2,33 +2,33 @@ import React, { PropTypes } from 'react';
 import { ListGroup, ListGroupItem, Alert,Row,Col ,Image} from 'react-bootstrap';
 
 const handleNav = (history, _id) => {
-  history.push(`/messages/${_id}`);
+  history.push(`/bookings/${_id}`);
 };
 
-const MessagesList = ({ history, messages }) => (
-  messages.length > 0 ? <ListGroup className="MessagesList">
-    {messages.map(({ _id, title }) => (
+const BookingsList = ({ history, bookings }) => (
+  bookings.length > 0 ? <ListGroup className="BookingsList">
+    {bookings.map(({ _id, title,detail1 }) => (
       <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
         <Row>
           <Col xs={ 2 } sm={ 1 }>
-            <Image src="/message-icon.png" responsive />
+            <Image src="/Booking-icon.png" responsive />
           </Col>
           <Col xs={ 10 } sm={ 11 }>
             <b>{ title }</b><br/>
-            breed:<br/>
-            age:<br/>
-            weight:
+            owner:{ detail1 }<br/>
+            tel:<br/>
+            location:
           </Col>
         </Row>
       </ListGroupItem>
     ))}
   </ListGroup> :
-  <Alert bsStyle="warning">No messages yet.</Alert>
+  <Alert bsStyle="warning">No bookings yet.</Alert>
 );
 
-MessagesList.propTypes = {
+BookingsList.propTypes = {
   history: PropTypes.object,
   documents: PropTypes.array,
 };
 
-export default MessagesList;
+export default BookingsList;

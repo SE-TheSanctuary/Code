@@ -37,6 +37,12 @@ const userID = () => {
   return user ? `${user._id}` : '';
 };
 
+const userRole = () => {
+  const user = Meteor.user();
+  const profile = user ? user.profile : '';
+  return user ? `${profile.roles}` : '';
+};
+
 const ViewShop = ({ doc, history }) => {
   console.log("ViewShop");
   console.log(doc.userId);
@@ -62,17 +68,49 @@ const ViewShop = ({ doc, history }) => {
         shopDetail1: { doc && doc.detail1 }<br/>
         shopDetail2: { doc && doc.detail2 }
       </div> :
+      userRole() == "customer" ?
       <div className="ViewShop">
         <div className="page-header clearfix">
-        <h4 className="pull-left">My Message</h4>
-        <Link to="/messages/new">
-          <Button
-            onClick={() => handleSendMessage(doc.userId)}
-            bsStyle="success"
-            className="pull-right"
-          >send message</Button>
-        </Link>
+          <h4 className="pull-left">My Message</h4>
+            <ButtonToolbar className="pull-right">
+              <ButtonGroup bsSize="small">
+                <Link to="/messages/new">
+                  <Button
+                    onClick={() => handleSendMessage(doc.userId)}
+                    bsStyle="success"
+                    className="pull-right"
+                  >send message</Button>
+                </Link>
+                <Link to="/bookings/new">
+                  <Button
+                    onClick={() => handleSendMessage(doc.userId)}
+                    bsStyle="success"
+                    className="pull-right"
+                  >booking</Button>
+                </Link>
+              </ButtonGroup>
+            </ButtonToolbar>
         </div>
+        shopName: { doc && doc.title }<br/>
+        shopOwnerId: { doc && doc.userId }<br/>
+        shopDetail1: { doc && doc.detail1 }<br/>
+        shopDetail2: { doc && doc.detail2 }
+      </div>:
+        <div className="ViewShop">
+          <div className="page-header clearfix">
+            <h4 className="pull-left">My Message</h4>
+              <ButtonToolbar className="pull-right">
+                <ButtonGroup bsSize="small">
+                  <Link to="/messages/new">
+                    <Button
+                      onClick={() => handleSendMessage(doc.userId)}
+                      bsStyle="success"
+                      className="pull-right"
+                    >send message</Button>
+                  </Link>
+                </ButtonGroup>
+              </ButtonToolbar>
+          </div>
         shopName: { doc && doc.title }<br/>
         shopOwnerId: { doc && doc.userId }<br/>
         shopDetail1: { doc && doc.detail1 }<br/>
