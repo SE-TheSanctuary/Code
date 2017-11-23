@@ -31,7 +31,10 @@ const AuthenticatedNavigation = () => (
           <NavLink to="/messages">My message</NavLink>
         </li>
         <li>
-          <NavLink to="/bookings">My booking</NavLink>
+          <NavLink to="/requests">My requests</NavLink>
+        </li>
+        <li>
+          <NavLink to="/schedules">My schedules</NavLink>
         </li>
       </Nav>
       <Nav pullRight>

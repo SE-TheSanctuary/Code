@@ -14,6 +14,8 @@ export const upsertBooking = new ValidatedMethod({
     userId: { type: String, optional: true },
     detail2: { type: String, optional: true },
     date: { type: String, optional: true },
+    receiveId: { type: String, optional: true },
+    status: { type: String, optional: true },
   }).validator(),
   run(booking) {
     return Bookings.upsert({ _id: booking._id }, { $set: booking });

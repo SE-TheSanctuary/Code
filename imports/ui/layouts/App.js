@@ -30,6 +30,9 @@ import NewBooking from '../pages/NewBooking';
 import EditBooking from '../containers/EditBooking';
 import ViewBooking from '../containers/ViewBooking';
 
+import RequestBookingsList from '../pages/RequestBookings';
+import Schedules from '../pages/Schedules';
+
 import Login from '../pages/Login';
 import RecoverPassword from '../pages/RecoverPassword';
 import ResetPassword from '../pages/ResetPassword';
@@ -60,6 +63,8 @@ const App = appProps => (
           <Authenticated exact path="/bookings/new" component={NewBooking} {...appProps} />
           <Authenticated exact path="/bookings/:_id" component={ViewBooking} {...appProps} />
           <Authenticated exact path="/bookings/:_id/edit" component={EditBooking} {...appProps} />
+          <Authenticated exact path="/requests" component={RequestBookingsList} {...appProps} />
+          <Authenticated exact path="/schedules" component={Schedules} {...appProps} />
           <Public path="/signup" component={Signup} {...appProps} />
           <Public path="/login" component={Login} {...appProps} />
           <Route name="recover-password" path="/recover-password" component={RecoverPassword} />

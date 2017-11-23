@@ -7,13 +7,13 @@ export default Bookings;
 
 Bookings.allow({
   insert: () => false,
-  update: () => false,
+  update: () => true,
   remove: () => false,
 });
 
 Bookings.deny({
   insert: () => true,
-  update: () => true,
+  update: () => false,
   remove: () => true,
 });
 
@@ -38,6 +38,14 @@ Bookings.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
+  receiveId: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
+  status: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
 });
 
 Bookings.attachSchema(Bookings.schema);
@@ -48,4 +56,6 @@ Factory.define('booking', Bookings, {
   detail2: () => 'Factory detail2',
   userId: () => 'Factory userId',
   date: () => 'Factory creationDate', //here
+  receiveId: () => 'Factory receiveId', //here
+  status: () => 'Factory status', //here
 });

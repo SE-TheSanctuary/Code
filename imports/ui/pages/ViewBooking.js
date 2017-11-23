@@ -4,7 +4,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { removeBooking } from '../../api/bookings/methods';
 import NotFound from './NotFound';
 import { Meteor } from 'meteor/meteor';
-
+import Bookings from '../../api/bookings/bookings';
 
 const handleEdit = (history, _id) => {
   history.push(`/bookings/${_id}/edit`);
@@ -23,11 +23,18 @@ const handleRemove = (history, _id) => {
   }
 };
 
-const handleSendMessage = (userId) => {
-  console.log("send");
-  console.log(userId);
-  receiveId = userId;
-  console.log(receiveId);
+const handleAccept = (history,_id) => {
+  console.log("Accept!!!!!");
+  console.log(_id);
+  Bookings.update({_id : _id},{$set:{status : "Accept"}});
+  history.push('/schedules');
+};
+
+const handleDecline = (history,_id) => {
+  console.log("decline!!!!!");
+  console.log(_id);
+  Bookings.update({_id : _id},{$set:{status : "Decline"}});
+  history.push('/schedules');
 };
 
 const userID = () => {
@@ -35,30 +42,105 @@ const userID = () => {
   return user ? `${user._id}` : '';
 };
 
+const userRole = () => {
+  const user = Meteor.user();
+  const profile = user ? user.profile : '';
+  return user ? `${profile.roles}` : '';
+};
+
 const ViewBooking = ({ doc, history }) => {
   console.log("ViewBooking");
-  console.log(doc.userId);
+  //console.log(doc.userId);
+  //console.log(doc.status);
   return doc ? (
-      <div className="ViewBooking">
-        <div className="page-header clearfix">
-          <h4 className="pull-left">{ doc && doc.title }</h4>
-          <ButtonToolbar className="pull-right">
-            <ButtonGroup bsSize="small">
-              <Button
-                onClick={() => handleEdit(history, doc._id)}
-              >Edit</Button>
-              <Button
-                onClick={() => handleRemove(history, doc._id)}
-                className="text-danger"
-              >Delete</Button>
-            </ButtonGroup>
-          </ButtonToolbar>
+    userRole() == "customer" ?
+      doc.status == "false" ?
+        <div className="ViewBooking">
+          <div className="page-header clearfix">
+            <h4 className="pull-left">{ doc && doc.title }</h4>
+            <ButtonToolbar className="pull-right">
+              <ButtonGroup bsSize="small">
+                <Button
+                  onClick={() => handleRemove(history, doc._id)}
+                  className="text-danger"
+                >Cancle Booking</Button>
+              </ButtonGroup>
+            </ButtonToolbar>
+          </div>
+          bookingpName: { doc && doc.title }<br/>
+          bookingOwnerId: { doc && doc.userId }<br/>
+          bookingDetail1: { doc && doc.detail1 }<br/>
+          bookingDetail2: { doc && doc.detail2 }<br/>
+          bookingStatus: { doc && doc.status }
+        </div>:
+          doc.status == "Accept" ?
+            <div className="ViewBooking">
+              <div className="page-header clearfix">
+                <h4 className="pull-left">{ doc && doc.title }</h4>
+                <ButtonToolbar className="pull-right">
+                  <ButtonGroup bsSize="small">
+
+                  </ButtonGroup>
+                </ButtonToolbar>
+              </div>
+              bookingpName: { doc && doc.title }<br/>
+              bookingOwnerId: { doc && doc.userId }<br/>
+              bookingDetail1: { doc && doc.detail1 }<br/>
+              bookingDetail2: { doc && doc.detail2 }<br/>
+              bookingStatus: { doc && doc.status }
+            </div>:
+            <div className="ViewBooking">
+              <div className="page-header clearfix">
+                <h4 className="pull-left">{ doc && doc.title }</h4>
+                <ButtonToolbar className="pull-right">
+                  <ButtonGroup bsSize="small">
+                    <Button
+                      onClick={() => handleRemove(history, doc._id)}
+                      className="text-danger"
+                    >Delete Booking</Button>
+                  </ButtonGroup>
+                </ButtonToolbar>
+              </div>
+              bookingpName: { doc && doc.title }<br/>
+              bookingOwnerId: { doc && doc.userId }<br/>
+              bookingDetail1: { doc && doc.detail1 }<br/>
+              bookingDetail2: { doc && doc.detail2 }<br/>
+              bookingStatus: { doc && doc.status }
+            </div>:
+      doc.status == "false" ?
+        <div className="ViewBooking">
+          <div className="page-header clearfix">
+            <h4 className="pull-left">{ doc && doc.title }</h4>
+            <ButtonToolbar className="pull-right">
+              <ButtonGroup bsSize="small">
+                <Button onClick={() => handleAccept(history, doc._id)}
+                  >Accept</Button>
+                <Button onClick={() => handleAccept(history, doc._id)}
+                  >Decline</Button>
+              </ButtonGroup>
+            </ButtonToolbar>
+          </div>
+          bookingpName: { doc && doc.title }<br/>
+          bookingOwnerId: { doc && doc.userId }<br/>
+          bookingDetail1: { doc && doc.detail1 }<br/>
+          bookingDetail2: { doc && doc.detail2 }<br/>
+          bookingStatus: { doc && doc.status }
+        </div>:
+        <div className="ViewBooking">
+          <div className="page-header clearfix">
+            <h4 className="pull-left">{ doc && doc.title }</h4>
+            <ButtonToolbar className="pull-right">
+              <ButtonGroup bsSize="small">
+                <Button>Message</Button>
+              </ButtonGroup>
+            </ButtonToolbar>
+          </div>
+          bookingpName: { doc && doc.title }<br/>
+          bookingOwnerId: { doc && doc.userId }<br/>
+          bookingDetail1: { doc && doc.detail1 }<br/>
+          bookingDetail2: { doc && doc.detail2 }<br/>
+          bookingStatus: { doc && doc.status }
         </div>
-        bookingpName: { doc && doc.title }<br/>
-        bookingOwnerId: { doc && doc.userId }<br/>
-        bookingDetail1: { doc && doc.detail1 }<br/>
-        bookingDetail2: { doc && doc.detail2 }
-      </div>
   ) : <NotFound />;
 };
 
