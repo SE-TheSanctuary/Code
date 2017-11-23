@@ -27,6 +27,7 @@ const handleAccept = (history,_id) => {
   console.log("Accept!!!!!");
   console.log(_id);
   Bookings.update({_id : _id},{$set:{status : "Accept"}});
+  Bert.alert('Booking Accepted!', 'success');
   history.push('/schedules');
 };
 
@@ -34,6 +35,7 @@ const handleDecline = (history,_id) => {
   console.log("decline!!!!!");
   console.log(_id);
   Bookings.update({_id : _id},{$set:{status : "Decline"}});
+  Bert.alert('Booking Declined!', 'success');
   history.push('/schedules');
 };
 
