@@ -6,3 +6,5 @@ import '../../api/messages/methods.js';
 import '../../api/messages/server/publications.js'
 import '../../api/bookings/methods.js';
 import '../../api/bookings/server/publications.js';
+import '../../api/reviews/methods.js';
+import '../../api/reviews/server/publications.js';

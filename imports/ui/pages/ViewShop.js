@@ -32,6 +32,13 @@ const handleSendMessage = (userId) => {
   console.log(receiveId);
 };
 
+const handleReview = (_id) => {
+  console.log("review");
+  console.log(_id);
+  reviewId = _id;
+  console.log(reviewId);
+};
+
 const userID = () => {
   const user = Meteor.user();
   return user ? `${user._id}` : '';
@@ -87,6 +94,13 @@ const ViewShop = ({ doc, history }) => {
                     bsStyle="success"
                     className="pull-right"
                   >booking</Button>
+                </Link>
+                <Link to="/reviews/new">
+                  <Button
+                    onClick={() => handleReview(doc._id)}
+                    bsStyle="success"
+                    className="pull-right"
+                  >review</Button>
                 </Link>
               </ButtonGroup>
             </ButtonToolbar>
