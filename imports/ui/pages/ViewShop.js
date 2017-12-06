@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
+import { ButtonToolbar, ButtonGroup, Button,Carousel,Col,Row } from 'react-bootstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { removeShop } from '../../api/shops/methods';
 import NotFound from './NotFound';
@@ -24,7 +24,7 @@ const handleRemove = (history, _id) => {
     });
   }
 };
-
+//
 const handleSendMessage = (userId) => {
   console.log("send");
   console.log(userId);
@@ -57,7 +57,7 @@ const ViewShop = ({ doc, history }) => {
     userID() == doc.userId ?
       <div className="ViewShop">
         <div className="page-header clearfix">
-          <h4 className="pull-left">{ doc && doc.title }</h4>
+        <h4 className="pull-left">{ doc && doc.title }</h4>
           <ButtonToolbar className="pull-right">
             <ButtonGroup bsSize="small">
               <Button
@@ -70,10 +70,51 @@ const ViewShop = ({ doc, history }) => {
             </ButtonGroup>
           </ButtonToolbar>
         </div>
-        shopName: { doc && doc.title }<br/>
-        shopOwnerId: { doc && doc.userId }<br/>
-        shopDetail1: { doc && doc.detail1 }<br/>
-        shopDetail2: { doc && doc.detail2 }
+          <div>
+            <div>
+              <Row>
+                <Col xs={ 12 } sm={ 8 }>
+                <div>
+                  <Carousel>
+                    <Carousel.Item>
+                      <img alt="640x360" src="/pet1.jpg" responsive/>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <img alt="640x360" src="/pet2.jpg" responsive/>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <img alt="640x360" src="/pet3.jpg" responsive/>
+                    </Carousel.Item>
+                  </Carousel>
+                  </div>
+                </Col>
+                <Col xs={ 12 } sm={ 4 }>
+                <br/>
+                  <h4>Description</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in consectetur purus, et porta eros. Sed convallis blandit velit. Nulla id lorem convallis, venenatis justo in, sollicitudin neque. Morbi non nibh metus. Curabitur at mauris felis. Cras velit mauris, pharetra id risus vitae, rutrum eleifend urna. Nunc est sapien, consectetur sit amet tortor at, egestas congue elit.
+                  </p>
+                  <br/>
+                  <h4>Starting price</h4>
+                  <p>1500 Bath</p><br/>
+                  <ButtonGroup vertical block>
+                    <Button bsSize="large">ติดต่อสอบถาม</Button>
+                  </ButtonGroup>
+                  <ButtonGroup vertical block>
+                    <Button bsStyle="primary" bsSize="large">จองเลย</Button>
+                  </ButtonGroup>
+                </Col>
+              </Row>
+              <div className="page-header clearfix"></div>
+                  <div>
+                    <Row>
+                      <Col xs={ 4 } sm={ 4 }>
+                          <div className="circle">ALL</div>
+                      </Col>
+                    </Row>
+                  </div>
+            </div>
+          </div>
       </div> :
       userRole() == "customer" ?
       <div className="ViewShop">
