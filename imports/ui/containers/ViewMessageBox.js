@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { composeWithTracker } from 'react-komposer';
 import MessageBoxs from '../../api/messageBoxs/messageBoxs.js';
-import EditMessageBox from '../pages/EditMessageBox.js';
+import ViewMessageBox from '../pages/ViewMessageBox.js';
 import Loading from '../components/Loading.js';
 
 const composer = ({ match }, onData) => {
@@ -14,4 +14,4 @@ const composer = ({ match }, onData) => {
   }
 };
 
-export default composeWithTracker(composer, Loading)(EditMessageBox);
+export default composeWithTracker(composer, Loading)(ViewMessageBox);

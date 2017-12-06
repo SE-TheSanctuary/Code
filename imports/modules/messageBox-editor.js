@@ -2,72 +2,74 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { upsertMessage } from '../api/messages/methods.js';
+import { upsertMessageBox } from '../api/messageBoxs/methods.js';
 import './validation.js';
 
 let component;
 
+const userRole = () => {
+  const user = Meteor.user();
+  const profile = user ? user.profile : '';
+  return user ? `${profile.roles}` : '';
+};
+
 const handleUpsert = () => {
   const { doc } = component.props;
-  const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
-  const upsert = {
-    title: document.querySelector('[name="title"]').value.trim(),
-    body: document.querySelector('[name="body"]').value.trim(),
-    userId:Meteor.userId(),
-    date: new Date().toISOString(),
-    receiveId: receiveId,
-    status: "false",
-  };
+  const confirmation = doc && doc._id ? 'MessageBox updated!' : 'MessageBox added!';
+  if(userRole == 'customer'){
+    const upsert = {
+      customer: Meteor.userId(),
+      shopOwner: receiveId,
+      date: new Date().toISOString(),
+      status: "false",
+    };
+  } else {
+    const upsert = {
+      customer: receiveId,
+      shopOwner: Meteor.userId(),
+      date: new Date().toISOString(),
+      status: "false",
+    };
+  }
+
 
   if (doc && doc._id) upsert._id = doc._id;
 
-  upsertMessage.call(upsert, (error, response) => {
+  upsertMessageBox.call(upsert, (error, response) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
-      component.messageEditorForm.reset();
+      component.messageBoxEditorForm.reset();
       Bert.alert(confirmation, 'success');
-      component.props.history.push(`/messages/${response.insertedId || doc._id}`);
+      component.props.history.push(`/messageBoxs/${response.insertedId || doc._id}`);
     }
   });
 };
 
 const validate = () => {
-  $(component.messageEditorForm).validate({
+  $(component.messageBoxEditorForm).validate({
     rules: {
-      title: {
+      customer: {
         required: true,
       },
-      body: {
+      shopOwner: {
         required: true,
-      },
-      userId: {
-        required: true,
-      }, //here
+      },//here
       date: {
-        required: true,
-      },
-      receiveId: {
         required: true,
       },
       status: {
         required: true,
       },
     },
-    messages: {
-      title: {
+    messageBoxs: {
+      customer: {
         required: 'Need a title in here, Seuss.',
       },
-      body: {
+      shopOwner: {
         required: 'This thneeds a body, please.',
       },
-      userId: {
-        required: 'This thneeds a body, please.',
-      }, //here
       date: {
-        required: 'This thneeds a body, please.',
-      },
-      receiveId: {
         required: 'This thneeds a body, please.',
       },
       status: {
@@ -78,7 +80,7 @@ const validate = () => {
   });
 };
 
-export default function messageEditor(options) {
+export default function messageBoxEditor(options) {
   component = options.component;
   validate();
 }

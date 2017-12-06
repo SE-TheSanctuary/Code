@@ -1,12 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
-import Messages from '../messages';
+import MessageBoxs from '../messageBoxs';
 
-Meteor.publish('messages.list', () => Messages.find());
+Meteor.publish('messageBoxs.list', () => MessageBoxs.find());
 
-Meteor.publish('messages.view', (_id) => {
+Meteor.publish('messageBoxs.view', (_id) => {
   check(_id, String);
-  return Messages.find(_id);
+  return MessageBoxs.find(_id);
 
 });
