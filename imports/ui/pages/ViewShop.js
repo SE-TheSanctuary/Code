@@ -101,8 +101,7 @@ const ViewShop = ({ doc, history }) => {
                   <h4>Description</h4>
                     <div className="description">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in consectetur purus, et porta eros. Sed convallis blandit velit
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in consectetur purus, et porta eros. Sed convallis blandit velit. Nulla id lorem convallis, venenatis justo in, sollicitudin neque. Morbi non nibh metus. Curabitur at mauris felis. Cras velit mauris, pharetra id risus vitae, rutrum eleifend urna. Nunc est sapien, consectetur sit amet tortor at, egestas congue elit.
+                        { doc && doc.detail2 }
                       </p>
                     </div>
                   <br/>
@@ -138,38 +137,78 @@ const ViewShop = ({ doc, history }) => {
       userRole() == "customer" ?
       <div className="ViewShop">
         <div className="page-header clearfix">
-          <h4 className="pull-left">My Message</h4>
-            <ButtonToolbar className="pull-right">
+        <h4 className="pull-left">{ doc && doc.title }</h4><ButtonToolbar className="pull-right">
               <ButtonGroup bsSize="small">
-                <Link to="/messages/new">
-                  <Button
-                    onClick={() => handleSendMessage(doc.userId)}
-                    bsStyle="success"
-                    className="pull-right"
-                  >send message</Button>
-                </Link>
-                <Link to="/bookings/new">
-                  <Button
-                    onClick={() => handleSendMessage(doc.userId)}
-                    bsStyle="success"
-                    className="pull-right"
-                  >booking</Button>
-                </Link>
                 <Link to="/reviews/new">
                   <Button
                     onClick={() => handleReview(doc._id)}
-                    bsStyle="success"
                     className="pull-right"
                   >review</Button>
                 </Link>
               </ButtonGroup>
             </ButtonToolbar>
         </div>
-        shopName: { doc && doc.title }<br/>
-        shopOwnerId: { doc && doc.userId }<br/>
-        shopDetail1: { doc && doc.detail1 }<br/>
-        shopDetail2: { doc && doc.detail2 }
-      </div>:
+          <div>
+            <div>
+              <Row>
+                <Col xs={ 12 } sm={ 8 }>
+                <div>
+                  <Carousel>
+                    <Carousel.Item>
+                      <img alt="640x360" src="/pet1.jpg" responsive/>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <img alt="640x360" src="/pet2.jpg" responsive/>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <img alt="640x360" src="/pet3.jpg" responsive/>
+                    </Carousel.Item>
+                  </Carousel>
+                  </div>
+                </Col>
+                <Col xs={ 12 } sm={ 4 }>
+                <br/>
+                  <h4>Description</h4>
+                    <div className="description">
+                      <p>
+                        { doc && doc.detail2 }
+                      </p>
+                    </div>
+                  <br/>
+                  <h4>Starting price</h4>
+                  <p>1500 Bath</p><br/>
+                  <Link to="/messages/new">
+                    <ButtonGroup vertical block>
+                    <Button bsSize="large" onClick={() => handleSendMessage(doc.userId)}>ติดต่อสอบถาม</Button>
+                    </ButtonGroup>
+                  </Link>
+                  <div className="JDT13"></div>
+                  <Link to="/bookings/new">
+                    <ButtonGroup vertical block>
+                    <Button bsStyle="primary" bsSize="large" onClick={() => handleSendMessage(doc.userId)}>จองเลย</Button>
+                    </ButtonGroup>
+                  </Link>
+                </Col>
+              </Row>
+              <div className="space-1"></div>
+              <h4 className="pull-left">Shop location</h4>
+              <div className="page-header clearfix"></div>
+              <div className="map">
+                <GoogleMapReact
+                  defaultCenter={{lat: 13.728990, lng: 100.775297}}
+                  defaultZoom={17}
+                    >
+                  <AnyReactComponent
+                    lat={13.728990}
+                    lng={100.775297}
+                    text={'Shop'}
+                  />
+              </GoogleMapReact>
+              <div className="space-1"></div>
+              </div>
+            </div>
+          </div>
+      </div> :
         <div className="ViewShop">
           <div className="page-header clearfix">
             <h4 className="pull-left">My Message</h4>

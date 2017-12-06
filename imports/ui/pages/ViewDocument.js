@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
+import { ButtonToolbar, ButtonGroup, Button,Col,Row } from 'react-bootstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { removeDocument } from '../../api/documents/methods';
 import NotFound from './NotFound';
@@ -38,10 +38,40 @@ const ViewDocument = ({ doc, history }) => {
           </ButtonGroup>
         </ButtonToolbar>
       </div>
-      breed    :{ doc && doc.breed }<br/>
-      petType  :{ doc && doc.petType }<br/>
-      userID   :{ doc && doc.userId }<br/>
-      optional :{ doc && doc.body }<br/>
+      <div>
+        <Row>
+          <Col xs={ 12 } sm={ 4 }>
+            <div className="pet-dog-bg">
+              <img alt="640x360" src="/dog.png" responsive/>
+            </div>
+          </Col>
+          <Col xs={ 12 } sm={ 8 }>
+            <div className="JDT15">
+                <div className="JDT17">
+                  <div className="pet-text">Breed</div>
+                  <br/>
+                  { doc && doc.breed }
+                </div>
+                <div className="JDT17">
+                  <div className="pet-text">Pet-type</div>
+                  <br/>
+                  { doc && doc.petType }
+                </div>
+                <div className="JDT17">
+                  <div className="pet-text">UserId</div>
+                  <br/>
+                  { doc && doc.userId }
+                </div>
+                <div className="JDT16">
+                  <div className="pet-text">Optional</div>
+                  <br/>
+                  { doc && doc.body }
+                </div>
+            </div>
+          </Col>
+        </Row>
+      </div>
+      <div className="page-header clearfix"></div>
     </div>
   ) : <NotFound />;
 };
