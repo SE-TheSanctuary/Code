@@ -38,9 +38,6 @@ const ViewDocument = ({ doc, history }) => {
           </ButtonGroup>
         </ButtonToolbar>
       </div>
-
-
-
       <div>
         <Row>
           <Col xs={ 12 } sm={ 4 }>
@@ -75,7 +72,6 @@ const ViewDocument = ({ doc, history }) => {
         </Row>
       </div>
       <div className="page-header clearfix"></div>
-
     </div>
   ) : <NotFound />;
 };
