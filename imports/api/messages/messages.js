@@ -7,13 +7,13 @@ export default Messages;
 
 Messages.allow({
   insert: () => false,
-  update: () => false,
+  update: () => true,
   remove: () => false,
 });
 
 Messages.deny({
   insert: () => true,
-  update: () => true,
+  update: () => false,
   remove: () => true,
 });
 
@@ -38,6 +38,10 @@ Messages.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
+  status: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
 });
 
 Messages.attachSchema(Messages.schema);
@@ -48,4 +52,5 @@ Factory.define('message', Messages, {
   userId: () => 'Factory userId',
   date: () => 'Factory creationDate', //here
   receiveId: () => 'Factory receiveId', //here
+  status: () => 'Factory status', //here
 });

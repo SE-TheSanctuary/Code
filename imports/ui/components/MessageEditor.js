@@ -10,11 +10,6 @@ export default class MessageEditor extends React.Component {
     setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
   }
 
-  // constructor(){
-  //   super();
-  //   this.state = {receiveId : " "};
-  // }
-
   render() {
     const { doc } = this.props;
     console.log("Message editor");
@@ -24,7 +19,7 @@ export default class MessageEditor extends React.Component {
       onSubmit={ event => event.preventDefault() }
     >
       <FormGroup>
-        <ControlLabel>Message name</ControlLabel>
+        <ControlLabel>Title</ControlLabel>
         <FormControl
           type="text"
           name="title"
@@ -33,16 +28,7 @@ export default class MessageEditor extends React.Component {
         />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Detail</ControlLabel>
-        <FormControl
-          type="text"
-          name="userId"
-          defaultValue={ doc && doc.userId }
-          placeholder="Oh, The Places You'll Go!"  //here
-        />
-      </FormGroup>
-      <FormGroup>
-        <ControlLabel>Detail</ControlLabel>
+        <ControlLabel>Message</ControlLabel>
         <FormControl
           componentClass="textarea"
           name="body"

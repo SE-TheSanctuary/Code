@@ -16,6 +16,7 @@ const handleUpsert = () => {
     userId:Meteor.userId(),
     date: new Date().toISOString(),
     receiveId: receiveId,
+    status: "false",
   };
 
   if (doc && doc._id) upsert._id = doc._id;
@@ -49,6 +50,9 @@ const validate = () => {
       receiveId: {
         required: true,
       },
+      status: {
+        required: true,
+      },
     },
     messages: {
       title: {
@@ -64,6 +68,9 @@ const validate = () => {
         required: 'This thneeds a body, please.',
       },
       receiveId: {
+        required: 'This thneeds a body, please.',
+      },
+      status: {
         required: 'This thneeds a body, please.',
       },
     },
