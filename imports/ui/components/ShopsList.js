@@ -4,7 +4,7 @@ import { ListGroup, ListGroupItem, Alert,Row,Col ,Image} from 'react-bootstrap';
 const handleNav = (history, _id) => {
   history.push(`/shops/${_id}`);
 };
-
+//
 const ShopsList = ({ history, shops }) => (
   shops.length > 0 ? <ListGroup className="ShopsList">
     {shops.map(({ _id, title,detail1 }) => (
