@@ -29,6 +29,23 @@
   border-radius: 100%;
   background:#0099ff;
 },
+.description {
+  height: 153px;
+  font-size: 14px;
+  line-height: 22px;
+  overflow: hidden;
+},
+.center-text {
+  text-align:center;
+  vertical-align:middle;
+  display: table-cell;
+},
+.center-img {
+  position: absolute;
+  margin: auto;
+  height: 10px;
+  width: 10px;
+},
 .circle {
   width: 180px;
   height: 180px;
@@ -39,4 +56,5 @@
   text-align: center;
   vertical-align: middle;
   background: #0099ff;
+  display: table;
 }

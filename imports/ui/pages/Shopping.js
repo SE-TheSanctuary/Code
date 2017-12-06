@@ -19,10 +19,10 @@ const Shops = ({ history }) => (
   <div className="Documents">
     <Row>
         <div className="page-header clearfix">
-          <Col xs={ 2 } >
+          <Col sm={ 2 } xs={ 12 }>
             <h4 >Shopping</h4>
           </Col>
-          <Col xs={ 2 } xsOffset={1}>
+          <Col sm={ 2 } smOffset={1} xs={ 12 }>
             <FormGroup controlId="formControlsSelect">
                 <InputGroup>
                     <FormControl componentClass="select" name="sort" placeholder="date">
@@ -35,7 +35,7 @@ const Shops = ({ history }) => (
                 </InputGroup>
               </FormGroup>
             </Col>
-            <Col xs={ 2 }>
+            <Col sm={ 2 } xs={ 12 }>
               <FormGroup controlId="formControlsSelect">
                   <InputGroup>
                     <FormControl componentClass="select" name="filter" placeholder="all">
@@ -44,11 +44,11 @@ const Shops = ({ history }) => (
                       <option value="cat">cat</option>
                       <option value="other">other</option>
                     </FormControl>
-                    <InputGroup.Addon>Filter</InputGroup.Addon>
+                    <InputGroup.Addon>Filter&emsp;</InputGroup.Addon>
                   </InputGroup>
                 </FormGroup>
               </Col>
-              <Col xs={ 5 }>
+              <Col sm={ 5 } xs={ 12 }>
                 <FormGroup>
                 <InputGroup>
                     <FormControl type="text" />

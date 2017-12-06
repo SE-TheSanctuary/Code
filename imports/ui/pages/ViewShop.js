@@ -91,9 +91,12 @@ const ViewShop = ({ doc, history }) => {
                 <Col xs={ 12 } sm={ 4 }>
                 <br/>
                   <h4>Description</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in consectetur purus, et porta eros. Sed convallis blandit velit. Nulla id lorem convallis, venenatis justo in, sollicitudin neque. Morbi non nibh metus. Curabitur at mauris felis. Cras velit mauris, pharetra id risus vitae, rutrum eleifend urna. Nunc est sapien, consectetur sit amet tortor at, egestas congue elit.
-                  </p>
+                    <div className="description">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in consectetur purus, et porta eros. Sed convallis blandit velit
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in consectetur purus, et porta eros. Sed convallis blandit velit. Nulla id lorem convallis, venenatis justo in, sollicitudin neque. Morbi non nibh metus. Curabitur at mauris felis. Cras velit mauris, pharetra id risus vitae, rutrum eleifend urna. Nunc est sapien, consectetur sit amet tortor at, egestas congue elit.
+                      </p>
+                    </div>
                   <br/>
                   <h4>Starting price</h4>
                   <p>1500 Bath</p><br/>
@@ -106,13 +109,6 @@ const ViewShop = ({ doc, history }) => {
                 </Col>
               </Row>
               <div className="page-header clearfix"></div>
-                  <div>
-                    <Row>
-                      <Col xs={ 4 } sm={ 4 }>
-                          <div className="circle">ALL</div>
-                      </Col>
-                    </Row>
-                  </div>
             </div>
           </div>
       </div> :
