@@ -2,20 +2,20 @@
 
 import React, { PropTypes } from 'react';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
-import messageEditor from '../../modules/message-editor.js';
+import messageBoxEditor from '../../modules/messageBox-editor.js';
 
-export default class MessageEditor extends React.Component {
+export default class MessageBoxEditor extends React.Component {
   componentDidMount() {
-    messageEditor({ component: this });
+    messageBoxEditor({ component: this });
     setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
   }
 
   render() {
     const { doc } = this.props;
-    console.log("Message editor");
+    console.log("MessageBox editor");
     console.log(receiveId);
     return (<form
-      ref={ form => (this.messageEditorForm = form) }
+      ref={ form => (this.messageBoxEditorForm = form) }
       onSubmit={ event => event.preventDefault() }
     >
       <FormGroup>
@@ -28,7 +28,7 @@ export default class MessageEditor extends React.Component {
         />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Message</ControlLabel>
+        <ControlLabel>MessageBox</ControlLabel>
         <FormControl
           componentClass="textarea"
           name="body"
@@ -43,6 +43,6 @@ export default class MessageEditor extends React.Component {
   }
 }
 
-MessageEditor.propTypes = {
+MessageBoxEditor.propTypes = {
   doc: PropTypes.object,
 };

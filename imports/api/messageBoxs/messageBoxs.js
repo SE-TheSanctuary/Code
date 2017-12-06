@@ -2,39 +2,31 @@ import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Factory } from 'meteor/dburles:factory';
 
-const Messages = new Mongo.Collection('Messages');
-export default Messages;
+const MessageBoxs = new Mongo.Collection('MessageBoxs');
+export default MessageBoxs;
 
-Messages.allow({
-  insert: () => false,
+MessageBoxs.allow({
+  insert: () => true,
   update: () => true,
   remove: () => false,
 });
 
-Messages.deny({
-  insert: () => true,
+MessageBoxs.deny({
+  insert: () => false,
   update: () => false,
   remove: () => true,
 });
 
-Messages.schema = new SimpleSchema({
-  title: {
+MessageBoxs.schema = new SimpleSchema({
+  customer: {
     type: String,
     label: 'The title of the document.',
   },
-  body: {
+  shopOwner: {
     type: String,
     label: 'The body of the document.',
   },
-  userId: {
-    type: String,
-    label: 'The userId of the document.', //here
-  },
   date: {
-    type: String,
-    label: 'The userId of the document.', //here
-  },
-  receiveId: {
     type: String,
     label: 'The userId of the document.', //here
   },
@@ -44,13 +36,11 @@ Messages.schema = new SimpleSchema({
   },
 });
 
-Messages.attachSchema(Messages.schema);
+MessageBoxs.attachSchema(MessageBoxs.schema);
 
-Factory.define('message', Messages, {
-  title: () => 'Factory Title',
-  body: () => 'Factory Body',
-  userId: () => 'Factory userId',
+Factory.define('messageBox', MessageBoxs, {
+  customer: () => 'Factory Customer',
+  shopOwner: () => 'Factory ShopOwner',
   date: () => 'Factory creationDate', //here
-  receiveId: () => 'Factory receiveId', //here
   status: () => 'Factory status', //here
 });

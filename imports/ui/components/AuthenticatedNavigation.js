@@ -28,7 +28,7 @@ const AuthenticatedNavigation = () => (
           <NavLink to="/shopping">Go Shopping</NavLink>
         </li>
         <li>
-          <NavLink to="/messages">My message</NavLink>
+          <NavLink to="/messageBoxs">messageBox</NavLink>
         </li>
         <li>
           <NavLink to="/requests">My requests</NavLink>
@@ -55,7 +55,7 @@ const AuthenticatedNavigation = () => (
           <NavLink to="/shopping">Go Shopping</NavLink>
         </li>
         <li>
-          <NavLink to="/messages">My message</NavLink>
+          <NavLink to="/messageBoxs">messageBox</NavLink>
         </li>
         <li>
           <NavLink to="/bookings">My booking</NavLink>

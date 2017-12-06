@@ -1,20 +1,20 @@
 import React, { PropTypes } from 'react';
 import { ListGroup, ListGroupItem, Alert,Row,Col ,Image} from 'react-bootstrap';
-import Messages from '../../api/messages/messages';
+import MessageBoxs from '../../api/messageBoxs/messageBoxs';
 
 const handleNav = (history, _id) => {
   console.log(_id);
-  Messages.update({_id : _id},{$set:{status : "read"}});
-  history.push(`/messages/${_id}`);
+  MessageBoxs.update({_id : _id},{$set:{status : "read"}});
+  history.push(`/messageBoxs/${_id}`);
 };
 
-const MessagesList = ({ history, messages }) => (
-  messages.length > 0 ? <ListGroup className="MessagesList">
-    {messages.map(({ _id, title }) => (
+const MessageBoxsList = ({ history, messageBoxs }) => (
+  messageBoxs.length > 0 ? <ListGroup className="MessageBoxsList">
+    {messageBoxs.map(({ _id, title }) => (
       <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
         <Row>
           <Col xs={ 2 } sm={ 1 }>
-            <Image src="/message-icon.png" responsive />
+            <Image src="/messageBox-icon.png" responsive />
           </Col>
           <Col xs={ 10 } sm={ 11 }>
             <b>{ title }</b><br/>
@@ -26,12 +26,12 @@ const MessagesList = ({ history, messages }) => (
       </ListGroupItem>
     ))}
   </ListGroup> :
-  <Alert bsStyle="warning">No messages yet.</Alert>
+  <Alert bsStyle="warning">No messagesBox yet.</Alert>
 );
 
-MessagesList.propTypes = {
+MessageBoxsList.propTypes = {
   history: PropTypes.object,
   documents: PropTypes.array,
 };
 
-export default MessagesList;
+export default MessageBoxsList;

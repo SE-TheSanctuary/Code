@@ -3,6 +3,8 @@ import '../../api/documents/server/publications.js';
 import '../../api/shops/methods.js';
 import '../../api/shops/server/publications.js';
 import '../../api/messages/methods.js';
+import '../../api/messageBoxs/server/publications.js'
+import '../../api/messageBoxs/methods.js';
 import '../../api/messages/server/publications.js'
 import '../../api/bookings/methods.js';
 import '../../api/bookings/server/publications.js';
