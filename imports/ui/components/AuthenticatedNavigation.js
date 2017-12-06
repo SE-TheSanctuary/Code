@@ -30,6 +30,15 @@ const AuthenticatedNavigation = () => (
         <li>
           <NavLink to="/messages">My message</NavLink>
         </li>
+        <li>
+          <NavLink to="/requests">My requests</NavLink>
+        </li>
+        <li>
+          <NavLink to="/schedules">My schedules</NavLink>
+        </li>
+        <li>
+          <NavLink to="/reviews">reviews</NavLink>
+        </li>
       </Nav>
       <Nav pullRight>
         <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
@@ -47,6 +56,12 @@ const AuthenticatedNavigation = () => (
         </li>
         <li>
           <NavLink to="/messages">My message</NavLink>
+        </li>
+        <li>
+          <NavLink to="/bookings">My booking</NavLink>
+        </li>
+        <li>
+          <NavLink to="/reviews">reviews</NavLink>
         </li>
       </Nav>
       <Nav pullRight>

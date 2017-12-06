@@ -2,29 +2,37 @@ import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Factory } from 'meteor/dburles:factory';
 
-const Messages = new Mongo.Collection('Messages');
-export default Messages;
+const Reviews = new Mongo.Collection('Reviews');
+export default Reviews;
 
-Messages.allow({
+Reviews.allow({
   insert: () => false,
-  update: () => true,
+  update: () => false,
   remove: () => false,
 });
 
-Messages.deny({
+Reviews.deny({
   insert: () => true,
-  update: () => false,
+  update: () => true,
   remove: () => true,
 });
 
-Messages.schema = new SimpleSchema({
+Reviews.schema = new SimpleSchema({
   title: {
     type: String,
     label: 'The title of the document.',
   },
-  body: {
+  petType: {
     type: String,
-    label: 'The body of the document.',
+    label: 'The type of the pet.', //here
+  },
+  detail1: {
+    type: String,
+    label: 'The detail1 of the document.',
+  },
+  detail2: {
+    type: String,
+    label: 'The detail2 of the document.',
   },
   userId: {
     type: String,
@@ -34,23 +42,20 @@ Messages.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
-  receiveId: {
-    type: String,
-    label: 'The userId of the document.', //here
-  },
-  status: {
+  shopId: {
     type: String,
     label: 'The userId of the document.', //here
   },
 });
 
-Messages.attachSchema(Messages.schema);
+Reviews.attachSchema(Reviews.schema);
 
-Factory.define('message', Messages, {
+Factory.define('review', Reviews, {
   title: () => 'Factory Title',
-  body: () => 'Factory Body',
+  petType: () => 'Factory breed', //here
+  detail1: () => 'Factory detail1',
+  detail2: () => 'Factory detail2',
   userId: () => 'Factory userId',
   date: () => 'Factory creationDate', //here
-  receiveId: () => 'Factory receiveId', //here
-  status: () => 'Factory status', //here
+  shopId: () => 'Factory receiveId',
 });

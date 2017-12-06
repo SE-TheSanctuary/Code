@@ -1,23 +1,24 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
-import MessagesList from '../containers/MessagesList.js';
+import BookingsList from '../containers/SchedulesList.js';
 
-const Messages = ({ history }) => (
-  <div className="Messages">
+const Bookings = ({ history }) => (
+  <div className="Documents">
     <Row>
       <Col xs={ 12 }>
         <div className="page-header clearfix">
-          <h4 className="pull-left">My Message</h4>
+          <h4 className="pull-left">My schedules</h4>
+
         </div>
-        <MessagesList history={history} />
+        <BookingsList history={history} />
       </Col>
     </Row>
   </div>
 );
 
-Messages.propTypes = {
+Bookings.propTypes = {
   history: PropTypes.object,
 };
 
-export default Messages;
+export default Bookings;

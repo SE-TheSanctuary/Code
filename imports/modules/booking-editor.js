@@ -2,17 +2,18 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { upsertMessage } from '../api/messages/methods.js';
+import { upsertBooking } from '../api/bookings/methods.js';
 import './validation.js';
 
 let component;
-
+//
 const handleUpsert = () => {
   const { doc } = component.props;
-  const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
+  const confirmation = doc && doc._id ? 'Booking updated!' : 'Booking added!';
   const upsert = {
     title: document.querySelector('[name="title"]').value.trim(),
-    body: document.querySelector('[name="body"]').value.trim(),
+    detail1: document.querySelector('[name="detail1"]').value.trim(),
+    detail2: document.querySelector('[name="detail2"]').value.trim(),
     userId:Meteor.userId(),
     date: new Date().toISOString(),
     receiveId: receiveId,
@@ -21,24 +22,27 @@ const handleUpsert = () => {
 
   if (doc && doc._id) upsert._id = doc._id;
 
-  upsertMessage.call(upsert, (error, response) => {
+  upsertBooking.call(upsert, (error, response) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
     } else {
-      component.messageEditorForm.reset();
+      component.bookingEditorForm.reset();
       Bert.alert(confirmation, 'success');
-      component.props.history.push(`/messages/${response.insertedId || doc._id}`);
+      component.props.history.push(`/bookings/${response.insertedId || doc._id}`);
     }
   });
 };
 
 const validate = () => {
-  $(component.messageEditorForm).validate({
+  $(component.bookingEditorForm).validate({
     rules: {
       title: {
         required: true,
       },
-      body: {
+      detail1: {
+        required: true,
+      },
+      detail2: {
         required: true,
       },
       userId: {
@@ -58,7 +62,10 @@ const validate = () => {
       title: {
         required: 'Need a title in here, Seuss.',
       },
-      body: {
+      detail1: {
+        required: 'This thneeds a body, please.',
+      },
+      detail2: {
         required: 'This thneeds a body, please.',
       },
       userId: {
@@ -78,7 +85,7 @@ const validate = () => {
   });
 };
 
-export default function messageEditor(options) {
+export default function bookingEditor(options) {
   component = options.component;
   validate();
 }

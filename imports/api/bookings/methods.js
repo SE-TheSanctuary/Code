@@ -1,35 +1,36 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 
-import Messages from './messages';
+import Bookings from './bookings';
 import rateLimit from '../../modules/rate-limit.js';
 
-export const upsertMessage = new ValidatedMethod({
-  name: 'messages.upsert',
+export const upsertBooking = new ValidatedMethod({
+  name: 'bookings.upsert',
 
   validate: new SimpleSchema({
     _id: { type: String, optional: true },
     title: { type: String, optional: true },
-    body: { type: String, optional: true },
+    detail1: { type: String, optional: true },
     userId: { type: String, optional: true },
+    detail2: { type: String, optional: true },
     date: { type: String, optional: true },
     receiveId: { type: String, optional: true },
     status: { type: String, optional: true },
   }).validator(),
-  run(message) {
-    return Messages.upsert({ _id: message._id }, { $set: message });
+  run(booking) {
+    return Bookings.upsert({ _id: booking._id }, { $set: booking });
   },
 });
 
-export const removeMessage = new ValidatedMethod({
-  name: 'messages.remove',
+export const removeBooking = new ValidatedMethod({
+  name: 'bookings.remove',
 
   validate: new SimpleSchema({
     _id: { type: String },
   }).validator(),
   run({ _id }) {
 
-    Messages.remove(_id);
+    Bookings.remove(_id);
 
   },
 });
@@ -37,8 +38,8 @@ export const removeMessage = new ValidatedMethod({
 rateLimit({
   methods: [
 
-    upsertMessage,
-    removeMessage,
+    upsertBooking,
+    removeBooking,
 
   ],
   limit: 5,

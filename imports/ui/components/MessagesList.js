@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
 import { ListGroup, ListGroupItem, Alert,Row,Col ,Image} from 'react-bootstrap';
+import Messages from '../../api/messages/messages';
 
 const handleNav = (history, _id) => {
+  console.log(_id);
+  Messages.update({_id : _id},{$set:{status : "read"}});
   history.push(`/messages/${_id}`);
 };
 
@@ -11,7 +14,7 @@ const MessagesList = ({ history, messages }) => (
       <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
         <Row>
           <Col xs={ 2 } sm={ 1 }>
-            <Image src="/pet-icon.png" responsive />
+            <Image src="/message-icon.png" responsive />
           </Col>
           <Col xs={ 10 } sm={ 11 }>
             <b>{ title }</b><br/>

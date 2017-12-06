@@ -25,6 +25,19 @@ import NewMessage from '../pages/NewMessage';
 import EditMessage from '../containers/EditMessage';
 import ViewMessage from '../containers/ViewMessage';
 
+import Bookings from '../pages/Bookings';
+import NewBooking from '../pages/NewBooking';
+import EditBooking from '../containers/EditBooking';
+import ViewBooking from '../containers/ViewBooking';
+
+import RequestBookingsList from '../pages/RequestBookings';
+import Schedules from '../pages/Schedules';
+
+import Reviews from '../pages/Reviews';
+import NewReview from '../pages/NewReview';
+import EditReview from '../containers/EditReview';
+import ViewReview from '../containers/ViewReview';
+
 import Login from '../pages/Login';
 import RecoverPassword from '../pages/RecoverPassword';
 import ResetPassword from '../pages/ResetPassword';
@@ -51,6 +64,16 @@ const App = appProps => (
           <Authenticated exact path="/messages/new" component={NewMessage} {...appProps} />
           <Authenticated exact path="/messages/:_id" component={ViewMessage} {...appProps} />
           <Authenticated exact path="/messages/:_id/edit" component={EditMessage} {...appProps} />
+          <Authenticated exact path="/bookings" component={Bookings} {...appProps} />
+          <Authenticated exact path="/bookings/new" component={NewBooking} {...appProps} />
+          <Authenticated exact path="/bookings/:_id" component={ViewBooking} {...appProps} />
+          <Authenticated exact path="/bookings/:_id/edit" component={EditBooking} {...appProps} />
+          <Authenticated exact path="/requests" component={RequestBookingsList} {...appProps} />
+          <Authenticated exact path="/schedules" component={Schedules} {...appProps} />
+          <Authenticated exact path="/reviews" component={Reviews} {...appProps} />
+          <Authenticated exact path="/reviews/new" component={NewReview} {...appProps} />
+          <Authenticated exact path="/reviews/:_id" component={ViewReview} {...appProps} />
+          <Authenticated exact path="/reviews/:_id/edit" component={EditReview} {...appProps} />
           <Public path="/signup" component={Signup} {...appProps} />
           <Public path="/login" component={Login} {...appProps} />
           <Route name="recover-password" path="/recover-password" component={RecoverPassword} />

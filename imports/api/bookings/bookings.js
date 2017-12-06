@@ -2,29 +2,33 @@ import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Factory } from 'meteor/dburles:factory';
 
-const Messages = new Mongo.Collection('Messages');
-export default Messages;
+const Bookings = new Mongo.Collection('Bookings');
+export default Bookings;
 
-Messages.allow({
+Bookings.allow({
   insert: () => false,
   update: () => true,
   remove: () => false,
 });
 
-Messages.deny({
+Bookings.deny({
   insert: () => true,
   update: () => false,
   remove: () => true,
 });
 
-Messages.schema = new SimpleSchema({
+Bookings.schema = new SimpleSchema({
   title: {
     type: String,
     label: 'The title of the document.',
   },
-  body: {
+  detail1: {
     type: String,
-    label: 'The body of the document.',
+    label: 'The detail1 of the document.',
+  },
+  detail2: {
+    type: String,
+    label: 'The detail2 of the document.',
   },
   userId: {
     type: String,
@@ -44,11 +48,12 @@ Messages.schema = new SimpleSchema({
   },
 });
 
-Messages.attachSchema(Messages.schema);
+Bookings.attachSchema(Bookings.schema);
 
-Factory.define('message', Messages, {
+Factory.define('booking', Bookings, {
   title: () => 'Factory Title',
-  body: () => 'Factory Body',
+  detail1: () => 'Factory detail1',
+  detail2: () => 'Factory detail2',
   userId: () => 'Factory userId',
   date: () => 'Factory creationDate', //here
   receiveId: () => 'Factory receiveId', //here
