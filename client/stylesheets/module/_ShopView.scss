@@ -3,6 +3,22 @@
     padding-left: 121px;
     position: relative;
 },
+.JDT15 {
+    padding-left: 20px;
+    padding-top: 20px;
+    position: relative;
+},
+.JDT16 {
+    height: 370px;
+    font-size: 14px;
+    line-height: 22px;
+    overflow: hidden;
+},
+.JDT17 {
+    height: 70px;
+    font-size: 14px;
+    line-height: 22px;
+},
 .header123 {
     border-bottom: 1px solid #dadada;
     margin-bottom: 20px;
@@ -15,6 +31,10 @@
     font-size: 25px;
     float: left;
 },
+.pet-text {
+    font-size: 25px;
+    float: left;
+},
 .pictureSlice{
   width:200px;
   height:200px;
@@ -22,6 +42,33 @@
 .picture-map{
   max-width:20px;
   max-height:20px;
+},
+.pet-dog-bg {
+  width:100%;
+  height:600px;
+  background:#E0E0E0;
+},
+.pet-dog-bg img {
+    position: absolute;
+    display: inline-block;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: auto;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+},
+.pet-pic {
+  width:100%;
+  height:900px;
+  margin: auto;
+  max-height:900px;
+},
+.pet-pic img{
+  max-width: 100%;
+  max-height: 100%;
 },
 .carousel {
   width:100%;
