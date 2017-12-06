@@ -6,11 +6,13 @@ import NotFound from './NotFound';
 import { Meteor } from 'meteor/meteor';
 import MessagesList from '../containers/MessagesList.js';
 import { Link } from 'react-router-dom';
-
+import GoogleMapReact from 'google-map-react';
 
 const handleEdit = (history, _id) => {
   history.push(`/shops/${_id}/edit`);
 };
+
+const AnyReactComponent = ({ text }) => (<div>{text}</div>);
 
 const handleRemove = (history, _id) => {
   if (confirm('Are you sure? This is permanent!')) {
@@ -108,7 +110,22 @@ const ViewShop = ({ doc, history }) => {
                   </ButtonGroup>
                 </Col>
               </Row>
+              <div className="space-1"></div>
+              <h4 className="pull-left">Shop location</h4>
               <div className="page-header clearfix"></div>
+              <div className="map">
+                <GoogleMapReact
+                  defaultCenter={{lat: 13.728990, lng: 100.775297}}
+                  defaultZoom={17}
+                    >
+                  <AnyReactComponent
+                    lat={13.728990}
+                    lng={100.775297}
+                    text={'Shop'}
+                  />
+              </GoogleMapReact>
+              <div className="space-1"></div>
+              </div>
             </div>
           </div>
       </div> :

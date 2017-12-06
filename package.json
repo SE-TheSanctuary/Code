@@ -65,6 +65,7 @@
     "babel-runtime": "^6.26.0",
     "bcrypt": "^0.8.7",
     "bootstrap": "^3.3.7",
+    "google-map-react": "^0.25.0",
     "jquery": "^2.2.4",
     "jquery-validation": "^1.15.1",
     "react": "^15.3.2",
@@ -75,8 +76,7 @@
     "react-router-bootstrap": "^0.23.1",
     "react-router-dom": "^4.0.0"
   },
-  "engines":{
-
-    "node":"4.7.3"
+  "engines": {
+    "node": "4.7.3"
   }
 }
