@@ -12,7 +12,13 @@ const handleEdit = (history, _id) => {
   history.push(`/shops/${_id}/edit`);
 };
 
-const AnyReactComponent = ({ text }) => (<div>{text}</div>);
+//<div className="circle-1">{text}</div>
+//<div className="circle-1">xxxx</div>
+const AnyReactComponent = ({ text }) => (
+  <div>
+    <img alt="Shop here" src="/shop2.png" height="50" width="50" />
+  </div>
+);
 
 const handleRemove = (history, _id) => {
   if (confirm('Are you sure? This is permanent!')) {
