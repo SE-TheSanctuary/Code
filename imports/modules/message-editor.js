@@ -21,7 +21,7 @@ const userRole = () => {
 
 const handleUpsert = () => {
   var chk = "false";
-  var messageBoxId = "false";
+  messageBoxId = "";
   const upsertBox = {
     customer: "false",
     shopOwner: "false",
@@ -30,7 +30,6 @@ const handleUpsert = () => {
   };
 
   const subscription = Meteor.subscribe('messageBoxs.list');
-
 
   if(userRole() == 'customer'){
     Tracker.autorun(function() {
@@ -60,6 +59,74 @@ const handleUpsert = () => {
         }
       }
     });
+    if(userRole() == 'customer'){
+      Tracker.autorun(function() {
+        if (subscription.ready()) {
+          //return array of object that have same userId
+          const messageBoxs = MessageBoxs.find({customer:Meteor.userId(), shopOwner:receiveId}).map(function (doc) {
+            return doc;
+          })
+          messageBoxId = messageBoxs[0]._id
+          const { doc } = component.props;
+          const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
+          const upsert = {
+            title: document.querySelector('[name="title"]').value.trim(),
+            body: document.querySelector('[name="body"]').value.trim(),
+            userId:Meteor.userId(),
+            date: new Date().toISOString(),
+            receiveId: receiveId,
+            status: "false",
+            messageBoxId: messageBoxId,
+          };
+
+          if (doc && doc._id) upsert._id = doc._id;
+
+          upsertMessage.call(upsert, (error, response) => {
+            if (error) {
+              Bert.alert(error.reason, 'danger');
+            } else {
+              component.messageEditorForm.reset();
+              Bert.alert(confirmation, 'success');
+              component.props.history.push(`/messages/${response.insertedId || doc._id}`);
+            }
+          });
+        }
+      });
+    }
+    else{
+      Tracker.autorun(function() {
+        if (subscription.ready()) {
+          //return array of object that have same userId
+          const messageBoxs = MessageBoxs.find({customer:receiveId, shopOwner:Meteor.userId()}).map(function (doc) {
+            return doc;
+          })
+          messageBoxId = messageBoxs[0]._id
+          const { doc } = component.props;
+          const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
+          const upsert = {
+            title: document.querySelector('[name="title"]').value.trim(),
+            body: document.querySelector('[name="body"]').value.trim(),
+            userId:Meteor.userId(),
+            date: new Date().toISOString(),
+            receiveId: receiveId,
+            status: "false",
+            messageBoxId: messageBoxId,
+          };
+
+          if (doc && doc._id) upsert._id = doc._id;
+
+          upsertMessage.call(upsert, (error, response) => {
+            if (error) {
+              Bert.alert(error.reason, 'danger');
+            } else {
+              component.messageEditorForm.reset();
+              Bert.alert(confirmation, 'success');
+              component.props.history.push(`/messages/${response.insertedId || doc._id}`);
+            }
+          });
+        }
+      });
+    }
   }
   else{
     Tracker.autorun(function() {
@@ -89,79 +156,144 @@ const handleUpsert = () => {
         }
       }
     });
+    if(userRole() == 'customer'){
+      Tracker.autorun(function() {
+        if (subscription.ready()) {
+          //return array of object that have same userId
+          const messageBoxs = MessageBoxs.find({customer:Meteor.userId(), shopOwner:receiveId}).map(function (doc) {
+            return doc;
+          })
+          messageBoxId = messageBoxs[0]._id
+          const { doc } = component.props;
+          const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
+          const upsert = {
+            title: document.querySelector('[name="title"]').value.trim(),
+            body: document.querySelector('[name="body"]').value.trim(),
+            userId:Meteor.userId(),
+            date: new Date().toISOString(),
+            receiveId: receiveId,
+            status: "false",
+            messageBoxId: messageBoxId,
+          };
+
+          if (doc && doc._id) upsert._id = doc._id;
+
+          upsertMessage.call(upsert, (error, response) => {
+            if (error) {
+              Bert.alert(error.reason, 'danger');
+            } else {
+              component.messageEditorForm.reset();
+              Bert.alert(confirmation, 'success');
+              component.props.history.push(`/messages/${response.insertedId || doc._id}`);
+            }
+          });
+        }
+      });
+    }
+    else{
+      Tracker.autorun(function() {
+        if (subscription.ready()) {
+          //return array of object that have same userId
+          const messageBoxs = MessageBoxs.find({customer:receiveId, shopOwner:Meteor.userId()}).map(function (doc) {
+            return doc;
+          })
+          messageBoxId = messageBoxs[0]._id
+          const { doc } = component.props;
+          const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
+          const upsert = {
+            title: document.querySelector('[name="title"]').value.trim(),
+            body: document.querySelector('[name="body"]').value.trim(),
+            userId:Meteor.userId(),
+            date: new Date().toISOString(),
+            receiveId: receiveId,
+            status: "false",
+            messageBoxId: messageBoxId,
+          };
+
+          if (doc && doc._id) upsert._id = doc._id;
+
+          upsertMessage.call(upsert, (error, response) => {
+            if (error) {
+              Bert.alert(error.reason, 'danger');
+            } else {
+              component.messageEditorForm.reset();
+              Bert.alert(confirmation, 'success');
+              component.props.history.push(`/messages/${response.insertedId || doc._id}`);
+            }
+          });
+        }
+      });
+    }
   }
 
-  if(userRole() == 'customer'){
-    MessageBoxs.update({_id : _id},{$set:{status : "false"}});
-    Tracker.autorun(function() {
-      if (subscription.ready()) {
-        //return array of object that have same userId
-        const messageBoxs = MessageBoxs.find({customer:Meteor.userId(), shopOwner:receiveId}).map(function (doc) {
-          return doc;
-        })
-        messageBoxId = messageBoxs[0]._id
-        const { doc } = component.props;
-        const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
-        const upsert = {
-          title: document.querySelector('[name="title"]').value.trim(),
-          body: document.querySelector('[name="body"]').value.trim(),
-          userId:Meteor.userId(),
-          date: new Date().toISOString(),
-          receiveId: receiveId,
-          status: "false",
-          messageBoxId: messageBoxId,
-        };
-
-        if (doc && doc._id) upsert._id = doc._id;
-
-        upsertMessage.call(upsert, (error, response) => {
-          if (error) {
-            Bert.alert(error.reason, 'danger');
-          } else {
-            component.messageEditorForm.reset();
-            Bert.alert(confirmation, 'success');
-            component.props.history.push(`/messages/${response.insertedId || doc._id}`);
-          }
-        });
-      }
-    });
-  }
-  else{
-    MessageBoxs.update({_id : _id},{$set:{status : "false"}});
-    Tracker.autorun(function() {
-      if (subscription.ready()) {
-        //return array of object that have same userId
-        const messageBoxs = MessageBoxs.find({customer:receiveId, shopOwner:Meteor.userId()}).map(function (doc) {
-          return doc;
-        })
-        messageBoxId = messageBoxs[0]._id
-        const { doc } = component.props;
-        const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
-        const upsert = {
-          title: document.querySelector('[name="title"]').value.trim(),
-          body: document.querySelector('[name="body"]').value.trim(),
-          userId:Meteor.userId(),
-          date: new Date().toISOString(),
-          receiveId: receiveId,
-          status: "false",
-          messageBoxId: messageBoxId,
-        };
-
-        if (doc && doc._id) upsert._id = doc._id;
-
-        upsertMessage.call(upsert, (error, response) => {
-          if (error) {
-            Bert.alert(error.reason, 'danger');
-          } else {
-            component.messageEditorForm.reset();
-            Bert.alert(confirmation, 'success');
-            component.props.history.push(`/messages/${response.insertedId || doc._id}`);
-          }
-        });
-      }
-    });
-  }
-
+  // if(userRole() == 'customer'){
+  //   Tracker.autorun(function() {
+  //     if (subscription.ready()) {
+  //       //return array of object that have same userId
+  //       const messageBoxs = MessageBoxs.find({customer:Meteor.userId(), shopOwner:receiveId}).map(function (doc) {
+  //         return doc;
+  //       })
+  //       messageBoxId = messageBoxs[0]._id
+  //       const { doc } = component.props;
+  //       const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
+  //       const upsert = {
+  //         title: document.querySelector('[name="title"]').value.trim(),
+  //         body: document.querySelector('[name="body"]').value.trim(),
+  //         userId:Meteor.userId(),
+  //         date: new Date().toISOString(),
+  //         receiveId: receiveId,
+  //         status: "false",
+  //         messageBoxId: messageBoxId,
+  //       };
+  //
+  //       if (doc && doc._id) upsert._id = doc._id;
+  //
+  //       upsertMessage.call(upsert, (error, response) => {
+  //         if (error) {
+  //           Bert.alert(error.reason, 'danger');
+  //         } else {
+  //           component.messageEditorForm.reset();
+  //           Bert.alert(confirmation, 'success');
+  //           component.props.history.push(`/messages/${response.insertedId || doc._id}`);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+  // else{
+  //   Tracker.autorun(function() {
+  //     if (subscription.ready()) {
+  //       //return array of object that have same userId
+  //       const messageBoxs = MessageBoxs.find({customer:receiveId, shopOwner:Meteor.userId()}).map(function (doc) {
+  //         return doc;
+  //       })
+  //       messageBoxId = messageBoxs[0]._id
+  //       const { doc } = component.props;
+  //       const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
+  //       const upsert = {
+  //         title: document.querySelector('[name="title"]').value.trim(),
+  //         body: document.querySelector('[name="body"]').value.trim(),
+  //         userId:Meteor.userId(),
+  //         date: new Date().toISOString(),
+  //         receiveId: receiveId,
+  //         status: "false",
+  //         messageBoxId: messageBoxId,
+  //       };
+  //
+  //       if (doc && doc._id) upsert._id = doc._id;
+  //
+  //       upsertMessage.call(upsert, (error, response) => {
+  //         if (error) {
+  //           Bert.alert(error.reason, 'danger');
+  //         } else {
+  //           component.messageEditorForm.reset();
+  //           Bert.alert(confirmation, 'success');
+  //           component.props.history.push(`/messages/${response.insertedId || doc._id}`);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
 };
 
 const validate = () => {
