@@ -2,9 +2,20 @@ import React, { PropTypes } from 'react';
 import { ListGroup, ListGroupItem, Alert,Row,Col ,Image} from 'react-bootstrap';
 import MessageBoxs from '../../api/messageBoxs/messageBoxs';
 
+const userRole = () => {
+  const user = Meteor.user();
+  const profile = user ? user.profile : '';
+  return user ? `${profile.roles}` : '';
+};
+
 const handleNav = (history, _id) => {
   console.log(_id);
-  MessageBoxs.update({_id : _id},{$set:{status : "read"}});
+  if(userRole() == 'customer'){
+    MessageBoxs.update({_id : _id},{$set:{statusCustomer : "read"}});
+  }
+  else{
+    MessageBoxs.update({_id : _id},{$set:{statusShopOwner : "read"}});
+  }
   history.push(`/messageBoxs/${_id}`);
 };
 

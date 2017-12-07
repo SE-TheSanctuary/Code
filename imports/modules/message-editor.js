@@ -26,7 +26,8 @@ const handleUpsert = () => {
     customer: "false",
     shopOwner: "false",
     date: "false",
-    status: "false",
+    statusCustomer: "false",
+    statusShopOwner: "false",
   };
 
   const subscription = Meteor.subscribe('messageBoxs.list');
@@ -34,6 +35,7 @@ const handleUpsert = () => {
   function checkrole(callback){
 
     if(userRole() == 'customer'){
+      console.log("helllo")
       Tracker.autorun(function() {
         if (subscription.ready()) {
           //return array of object that have same userId
@@ -45,7 +47,8 @@ const handleUpsert = () => {
             upsertBox.customer = Meteor.userId()
             upsertBox.shopOwner = receiveId
             upsertBox.date = new Date().toISOString()
-            upsertBox.status = "false"
+            upsertBox.statusCustomer = "read"
+            upsertBox.statusShopOwner = "false"
 
             upsertMessageBox.call(upsertBox, (error, response) => {
               if (error) {
@@ -74,7 +77,8 @@ const handleUpsert = () => {
             upsertBox.customer = receiveId
             upsertBox.shopOwner = Meteor.userId()
             upsertBox.date = new Date().toISOString()
-            upsertBox.status = "false"
+            upsertBox.statusCustomer = "false"
+            upsertBox.statusShopOwner = "read"
 
             upsertMessageBox.call(upsertBox, (error, response) => {
               if (error) {
@@ -122,6 +126,7 @@ const handleUpsert = () => {
         if (error) {
           Bert.alert(error.reason, 'danger');
         } else {
+          MessageBoxs.update({_id : messageBoxId},{$set:{date : new Date().toISOString(), statusCustomer : 'false',}});
           component.messageEditorForm.reset();
           Bert.alert(confirmation, 'success');
           component.props.history.push(`/messages/${response.insertedId || doc._id}`);
@@ -150,6 +155,7 @@ const handleUpsert = () => {
         if (error) {
           Bert.alert(error.reason, 'danger');
         } else {
+          MessageBoxs.update({_id : messageBoxId},{$set:{date : new Date().toISOString(), statusShopOwner : 'false',}});
           component.messageEditorForm.reset();
           Bert.alert(confirmation, 'success');
           component.props.history.push(`/messages/${response.insertedId || doc._id}`);

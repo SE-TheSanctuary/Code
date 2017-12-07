@@ -1,10 +1,15 @@
 import React, { PropTypes } from 'react';
 import { ListGroup, ListGroupItem, Alert,Row,Col ,Image} from 'react-bootstrap';
-import Messages from '../../api/messages/messages';
+import MessageBoxs from '../../api/messageBoxs/messageBoxs';
+
+const userRole = () => {
+  const user = Meteor.user();
+  const profile = user ? user.profile : '';
+  return user ? `${profile.roles}` : '';
+};
 
 const handleNav = (history, _id) => {
   console.log(_id);
-  Messages.update({_id : _id},{$set:{status : "read"}});
   history.push(`/messages/${_id}`);
 };
 

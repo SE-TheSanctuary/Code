@@ -30,7 +30,11 @@ MessageBoxs.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
-  status: {
+  statusCustomer: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
+  statusShopOwner: {
     type: String,
     label: 'The userId of the document.', //here
   },
