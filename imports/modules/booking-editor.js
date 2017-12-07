@@ -7,6 +7,13 @@ import './validation.js';
 
 let component;
 //
+const userName = () => {
+  const user = Meteor.user();
+  const profile = user ? user.profile : '';
+  const name = profile ? profile.name : '';
+  return user ? `${name.first}` : '';
+};
+
 const handleUpsert = () => {
   const { doc } = component.props;
   const confirmation = doc && doc._id ? 'Booking updated!' : 'Booking added!';
@@ -18,6 +25,11 @@ const handleUpsert = () => {
     date: new Date().toISOString(),
     receiveId: receiveId,
     status: "false",
+    shopName: receiveName,
+    shopOwnerName: "false",
+    customerName: userName(),
+    beginSelectday: "false",
+    lastSelectday: "false",
   };
 
   if (doc && doc._id) upsert._id = doc._id;
@@ -57,6 +69,21 @@ const validate = () => {
       status: {
         required: true,
       },
+      shopName: {
+        required: true,
+      },
+      shopOwnerName: {
+        required: true,
+      },
+      customerName: {
+        required: true,
+      },
+      beginSelectday: {
+        required: true,
+      },
+      lastSelectday: {
+        required: true,
+      },
     },
     messages: {
       title: {
@@ -78,6 +105,21 @@ const validate = () => {
         required: 'This thneeds a body, please.',
       },
       status: {
+        required: 'This thneeds a body, please.',
+      },
+      shopName: {
+        required: 'This thneeds a body, please.',
+      },
+      shopOwnerName: {
+        required: 'This thneeds a body, please.',
+      },
+      customerName: {
+        required: 'This thneeds a body, please.',
+      },
+      beginSelectday: {
+        required: 'This thneeds a body, please.',
+      },
+      lastSelectday: {
         required: 'This thneeds a body, please.',
       },
     },

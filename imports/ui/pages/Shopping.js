@@ -71,6 +71,7 @@ const Shops = ({ history }) => (
 Shops.propTypes = {
   history: PropTypes.object,
   filterKey: PropTypes.string,
+  sortKey: PropTypes.string,
 };
 
 export default Shops;
