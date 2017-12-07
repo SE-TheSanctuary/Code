@@ -7,6 +7,7 @@ import { Meteor } from 'meteor/meteor';
 import MessagesList from '../containers/MessagesList.js';
 import { Link } from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
+import Reviews from '../containers/ReviewsList.js';
 
 const handleEdit = (history, _id) => {
   history.push(`/shops/${_id}/edit`);
@@ -108,10 +109,10 @@ const ViewShop = ({ doc, history }) => {
                   <h4>Starting price</h4>
                   <p>1500 Bath</p><br/>
                   <ButtonGroup vertical block>
-                    <Button bsSize="large">ติดต่อสอบถาม</Button>
+                    <Button bsSize="large" disabled>ติดต่อสอบถาม</Button>
                   </ButtonGroup>
                   <ButtonGroup vertical block>
-                    <Button bsStyle="primary" bsSize="large">จองเลย</Button>
+                    <Button bsStyle="primary" bsSize="large" disabled>จองเลย</Button>
                   </ButtonGroup>
                 </Col>
               </Row>
@@ -208,6 +209,27 @@ const ViewShop = ({ doc, history }) => {
               </div>
             </div>
           </div>
+
+          <div className="space-1"></div>
+          <div className="page-header clearfix">
+          <h4 className="pull-left">Review</h4><ButtonToolbar className="pull-right">
+                <ButtonGroup bsSize="small">
+                  <Link to="/reviews/new">
+                    <Button
+                      onClick={() => handleReview(doc._id)}
+                      className="pull-right"
+                    >review</Button>
+                  </Link>
+                </ButtonGroup>
+              </ButtonToolbar>
+          </div>
+
+          <div className="JDT18">
+              <Reviews history={history} />
+          </div>
+
+          <div className="page-header clearfix"></div>
+
       </div> :
         <div className="ViewShop">
           <div className="page-header clearfix">
