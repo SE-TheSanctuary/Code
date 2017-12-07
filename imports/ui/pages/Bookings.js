@@ -9,7 +9,7 @@ const Bookings = ({ history }) => (
       <Col xs={ 12 }>
         <div className="page-header clearfix">
           <h4 className="pull-left">My booking</h4>
-        
+
         </div>
         <BookingsList history={history} />
       </Col>
