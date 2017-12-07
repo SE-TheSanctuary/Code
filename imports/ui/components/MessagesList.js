@@ -13,20 +13,37 @@ const handleNav = (history, _id) => {
   history.push(`/messages/${_id}`);
 };
 
+const UserId = (userId) => {
+  console.log(userId.userId);
+  return userId.userId;
+};
+
 const MessagesList = ({ history, messages }) => (
   messages.length > 0 ? <ListGroup className="MessagesList">
     {messages.map(({ _id, title, userId, body }) => (
-      <ListGroupItem key={ _id } >
-        <Row>
-          <Col xs={ 2 } sm={ 1 }>
-            <Image src="/message1-icon.png" responsive />
-          </Col>
-          <Col xs={ 10 } sm={ 11 }>
-            <b>{ title }</b><br/>
-            { body }<br/>
-          </Col>
-        </Row>
-      </ListGroupItem>
+      UserId({ userId }) == Meteor.user()._id ?
+        <ListGroupItem key={ _id } >
+          <Row>
+            <Col xs={ 2 } sm={ 1 }>
+              <Image src="/message1-icon.png" responsive />
+            </Col>
+            <Col xs={ 10 } sm={ 11 }>
+              <b>{ title }</b><br/>
+              { body }<br/>
+            </Col>
+          </Row>
+        </ListGroupItem>:
+        <ListGroupItem key={ _id } >
+          <Row>
+            <Col xs={ 2 } sm={ 1 }>
+              <Image src="/message2-icon.png" responsive />
+            </Col>
+            <Col xs={ 10 } sm={ 11 }>
+              <b>{ title }</b><br/>
+              { body }<br/>
+            </Col>
+          </Row>
+        </ListGroupItem>
     ))}
   </ListGroup> :
   <Alert bsStyle="warning">No messages yet.</Alert>

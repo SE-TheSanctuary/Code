@@ -19,30 +19,62 @@ const handleNav = (history, _id) => {
   history.push(`/messageBoxs/${_id}`);
 };
 
+const RoleCus = (role) => {
+  console.log(role.statusCustomer);
+  return role.statusCustomer;
+};
+
+const RoleShop = (role) => {
+  console.log(role.statusShopOwner);
+  return role.statusShopOwner;
+};
+
 const MessageBoxsList = ({ history, messageBoxs }) => (
   messageBoxs.length > 0 ? <ListGroup className="MessageBoxsList">
-    {messageBoxs.map(({ _id, customerName, shopOwnerName }) => (
+    {messageBoxs.map(({ _id, customerName, shopOwnerName, statusCustomer, statusShopOwner }) => (
       userRole() == 'customer' ?
-        <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
-          <Row>
-            <Col xs={ 2 } sm={ 1 }>
-              <Image src="/messageBox-icon.png" responsive />
-            </Col>
-            <Col xs={ 10 } sm={ 11 }>
-              <b>{ shopOwnerName }</b><br/>
-            </Col>
-          </Row>
-        </ListGroupItem>:
-        <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
-          <Row>
-            <Col xs={ 2 } sm={ 1 }>
-              <Image src="/messageBox-icon.png" responsive />
-            </Col>
-            <Col xs={ 10 } sm={ 11 }>
-              <b>{ customerName }</b><br/>
-            </Col>
-          </Row>
-        </ListGroupItem>
+        RoleCus({ statusCustomer }) == 'read' ?
+            <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
+              <Row>
+                <Col xs={ 2 } sm={ 1 }>
+                  <Image src="/messageBox2-icon.png" responsive />
+                </Col>
+                <Col xs={ 10 } sm={ 11 }>
+                  <b>{ shopOwnerName }</b><br/>
+                </Col>
+              </Row>
+            </ListGroupItem>:
+            <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
+              <Row>
+                <Col xs={ 2 } sm={ 1 }>
+                  <Image src="/messageBox1-icon.png" responsive />
+                </Col>
+                <Col xs={ 10 } sm={ 11 }>
+                  <b>{ shopOwnerName }</b><br/>
+                </Col>
+              </Row>
+            </ListGroupItem>:
+        RoleShop({ statusShopOwner }) == 'read' ?
+            <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
+              <Row>
+                <Col xs={ 2 } sm={ 1 }>
+                  <Image src="/messageBox2-icon.png" responsive />
+                </Col>
+                <Col xs={ 10 } sm={ 11 }>
+                  <b>{ shopOwnerName }</b><br/>
+                </Col>
+              </Row>
+            </ListGroupItem>:
+            <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
+              <Row>
+                <Col xs={ 2 } sm={ 1 }>
+                  <Image src="/messageBox1-icon.png" responsive />
+                </Col>
+                <Col xs={ 10 } sm={ 11 }>
+                  <b>{ shopOwnerName }</b><br/>
+                </Col>
+              </Row>
+            </ListGroupItem>
     ))}
   </ListGroup> :
   <Alert bsStyle="warning">No messagesBox yet.</Alert>
