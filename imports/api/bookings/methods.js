@@ -14,6 +14,14 @@ export const upsertBooking = new ValidatedMethod({
     userId: { type: String, optional: true },
     detail2: { type: String, optional: true },
     date: { type: String, optional: true },
+
+    startDate1: { type: String, optional: true },
+    startDate2: { type: String, optional: true },
+    startDate3: { type: String, optional: true },
+    endDate1: { type: String, optional: true },
+    endDate2: { type: String, optional: true },
+    endDate3: { type: String, optional: true },
+
     receiveId: { type: String, optional: true },
     status: { type: String, optional: true },
     shopName: { type: String, optional: true },

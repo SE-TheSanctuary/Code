@@ -22,6 +22,15 @@ const handleUpsert = () => {
     detail1: document.querySelector('[name="detail1"]').value.trim(),
     detail2: document.querySelector('[name="detail2"]').value.trim(),
     userId:Meteor.userId(),
+
+
+    startDate1: document.querySelector('[name="startDate1"]').value.trim(),
+    startDate2: document.querySelector('[name="startDate2"]').value.trim(),
+    startDate3: document.querySelector('[name="startDate3"]').value.trim(),
+    endDate1: document.querySelector('[name="endDate1"]').value.trim(),
+    endDate2: document.querySelector('[name="endDate2"]').value.trim(),
+    endDate3: document.querySelector('[name="endDate3"]').value.trim(),
+
     date: new Date().toISOString(),
     receiveId: receiveId,
     status: "false",
