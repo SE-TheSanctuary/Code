@@ -38,6 +38,10 @@ Shops.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
+  shopOwner: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
   date: {
     type: String,
     label: 'The userId of the document.', //here
@@ -76,6 +80,7 @@ Factory.define('shop', Shops, {
   price: () => 'Factory detail1',
   detail2: () => 'Factory detail2',
   userId: () => 'Factory userId',
+  shopOwner: () => 'Factory userId',
   date: () => 'Factory creationDate', //here
   tel: () => 'Factory tel',
   lat: () => 'Factory lat',

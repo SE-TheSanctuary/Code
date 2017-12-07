@@ -13,6 +13,7 @@ export const upsertShop = new ValidatedMethod({
    petType:{ type: String, optional: true },
    price: { type: String, optional: true },
    userId: { type: String, optional: true },
+   shopOwner: { type: String, optional: true },
    tel: { type: String, optional: true },
    lat: { type: String, optional: true },
    long: { type: String, optional: true },
