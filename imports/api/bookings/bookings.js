@@ -46,6 +46,32 @@ Bookings.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
+
+  startDate1: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
+  startDate2: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
+  startDate3: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
+  endDate1: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
+  endDate2: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
+  endDate3: {
+    type: String,
+    label: 'The userId of the document.', //here
+  },
+
   shopName: {
     type: String,
     label: 'The userId of the document.', //here
@@ -76,6 +102,14 @@ Factory.define('booking', Bookings, {
   detail2: () => 'Factory detail2',
   userId: () => 'Factory userId',
   date: () => 'Factory creationDate', //here
+
+startDate1: () => 'Factory creationDate', //here
+startDate2: () => 'Factory creationDate', //here
+startDate3: () => 'Factory creationDate', //here
+endDate1: () => 'Factory creationDate', //here
+endDate2: () => 'Factory creationDate', //here
+endDate3: () => 'Factory creationDate', //here
+
   receiveId: () => 'Factory receiveId', //here
   status: () => 'Factory status', //here
   shopName: () => 'Factory status', //here
