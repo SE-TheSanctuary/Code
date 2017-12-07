@@ -22,19 +22,19 @@ const AuthenticatedNavigation = () => (
     <div>
       <Nav>
         <li>
-          <NavLink to="/shops">Shops</NavLink>
+          <NavLink to="/shops">My Shops</NavLink>
         </li>
         <li>
-          <NavLink to="/shopping">Go Shopping</NavLink>
+          <NavLink to="/shopping">Shops</NavLink>
         </li>
         <li>
-          <NavLink to="/messageBoxs">messageBox</NavLink>
+          <NavLink to="/messageBoxs">MessageBox</NavLink>
         </li>
         <li>
-          <NavLink to="/requests">My requests</NavLink>
+          <NavLink to="/requests">Requests</NavLink>
         </li>
         <li>
-          <NavLink to="/schedules">My schedules</NavLink>
+          <NavLink to="/schedules">My Schedules</NavLink>
         </li>
       </Nav>
       <Nav pullRight>
@@ -49,13 +49,13 @@ const AuthenticatedNavigation = () => (
           <NavLink to="/documents">My Pets</NavLink>
         </li>
         <li>
-          <NavLink to="/shopping">Go Shopping</NavLink>
+          <NavLink to="/shopping">Shops</NavLink>
         </li>
         <li>
-          <NavLink to="/messageBoxs">messageBox</NavLink>
+          <NavLink to="/messageBoxs">MessageBox</NavLink>
         </li>
         <li>
-          <NavLink to="/bookings">My booking</NavLink>
+          <NavLink to="/bookings">My Booking</NavLink>
         </li>
       </Nav>
       <Nav pullRight>
