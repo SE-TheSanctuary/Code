@@ -18,12 +18,12 @@ export default class BookingEditor extends React.Component {
       onSubmit={ event => event.preventDefault() }
     >
       <FormGroup>
-        <ControlLabel>Booking name</ControlLabel>
+        <ControlLabel>Reservation Name</ControlLabel>
         <FormControl
           type="text"
           name="title"
           defaultValue={ doc && doc.title }
-          placeholder="booking name"
+          placeholder="your name"
         />
       </FormGroup>
       <FormGroup>

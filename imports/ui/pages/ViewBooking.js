@@ -117,7 +117,7 @@ const ViewBooking = ({ doc, history }) => {
               <ButtonGroup bsSize="small">
                 <Button onClick={() => handleAccept(history, doc._id)}
                   >Accept</Button>
-                <Button onClick={() => handleAccept(history, doc._id)}
+                <Button onClick={() => handleDecline(history, doc._id)}
                   >Decline</Button>
               </ButtonGroup>
             </ButtonToolbar>
