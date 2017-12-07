@@ -9,7 +9,7 @@ export default class BookingEditor extends React.Component {
     bookingEditor({ component: this });
     setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
   }
-
+//update
   render() {
     const getInitialState = () => {
       value = new Date().toISOString();
