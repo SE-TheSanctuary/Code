@@ -18,6 +18,12 @@ const userRole = () => {
   return user ? `${profile.roles}` : '';
 };
 
+const userName = () => {
+  const user = Meteor.user();
+  const profile = user ? user.profile : '';
+  const name = profile ? profile.name : '';
+  return user ? `${name.first}` : '';
+};
 
 const handleUpsert = () => {
   var chk = "false";
@@ -39,7 +45,9 @@ const handleUpsert = () => {
           if(messageBoxs.length==0){
             const upsertBox = {
               customer: Meteor.userId(),
+              customerName: userName(),
               shopOwner: receiveId,
+              shopOwnerName: receiveName,
               date: new Date().toISOString(),
               statusCustomer: "read",
               statusShopOwner: "false",
@@ -73,7 +81,9 @@ const handleUpsert = () => {
           if(messageBoxs.length==0){
             const upsertBox = {
               customer: receiveId,
+              customerName: receiveName,
               shopOwner: Meteor.userId(),
+              shopOwnerName: userName(),
               date: new Date().toISOString(),
               statusCustomer: "false",
               statusShopOwner: "read",
@@ -107,12 +117,12 @@ const handleUpsert = () => {
     console.log("hellllo2")
     if(userRole() == 'customer'){
       messageBoxs = MessageBoxs.find({customer:Meteor.userId(), shopOwner:receiveId}).fetch()
-      console.log(messageBoxs)
+      console.log(userName())
       messageBoxId = messageBoxs[0]._id
       const { doc } = component.props;
       const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
       const upsert = {
-        title: document.querySelector('[name="title"]').value.trim(),
+        title: userName(),
         body: document.querySelector('[name="body"]').value.trim(),
         userId:Meteor.userId(),
         date: new Date().toISOString(),
@@ -142,7 +152,7 @@ const handleUpsert = () => {
       const { doc } = component.props;
       const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
       const upsert = {
-        title: document.querySelector('[name="title"]').value.trim(),
+        title: userName(),
         body: document.querySelector('[name="body"]').value.trim(),
         userId:Meteor.userId(),
         date: new Date().toISOString(),

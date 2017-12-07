@@ -19,7 +19,9 @@ const handleUpsert = () => {
   if(userRole() == 'customer'){
     const upsert = {
       customer: Meteor.userId(),
+      customerName: "false",
       shopOwner: receiveId,
+      shopOwnerName: "false",
       date: new Date().toISOString(),
       statusCustomer: "read",
       statusShopOwner: "false",
@@ -27,7 +29,9 @@ const handleUpsert = () => {
   } else {
     const upsert = {
       customer: receiveId,
+      customerName: "false",
       shopOwner: Meteor.userId(),
+      shopOwnerName: "false",
       date: new Date().toISOString(),
       statusCustomer: "false",
       statusShopOwner: "read",
@@ -54,7 +58,13 @@ const validate = () => {
       customer: {
         required: true,
       },
+      customerName: {
+        required: true,
+      },
       shopOwner: {
+        required: true,
+      },//here
+      shopOwnerName: {
         required: true,
       },//here
       date: {
@@ -71,7 +81,13 @@ const validate = () => {
       customer: {
         required: 'Need a title in here, Seuss.',
       },
+      customerName: {
+        required: 'Need a title in here, Seuss.',
+      },
       shopOwner: {
+        required: 'This thneeds a body, please.',
+      },
+      shopOwnerName: {
         required: 'This thneeds a body, please.',
       },
       date: {

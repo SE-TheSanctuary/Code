@@ -16,14 +16,14 @@ const composer = (params, onData) => {
   if (subscription.ready()) {
     //return array of object that have same userId
     if(userRole()=='customer'){
-      const messageBoxs = MessageBoxs.find({customer:Meteor.userId()}).map(function (doc) {
+      const messageBoxs = MessageBoxs.find({customer:Meteor.userId()}, {sort: {date: -1}}).map(function (doc) {
         return doc;
       })
       console.log(messageBoxs);
       onData(null, { messageBoxs });
     }
     else{
-      const messageBoxs = MessageBoxs.find({shopOwner:Meteor.userId()}).map(function (doc) {
+      const messageBoxs = MessageBoxs.find({shopOwner:Meteor.userId()}, {sort: {date: -1}}).map(function (doc) {
         return doc;
       })
       console.log(Meteor.userId());

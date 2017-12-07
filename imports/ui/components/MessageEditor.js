@@ -7,7 +7,7 @@ import messageEditor from '../../modules/message-editor.js';
 export default class MessageEditor extends React.Component {
   componentDidMount() {
     messageEditor({ component: this });
-    setTimeout(() => { document.querySelector('[name="title"]').focus(); }, 0);
+    setTimeout(() => { document.querySelector('[name="body"]').focus(); }, 0);
   }
 
   render() {
@@ -18,15 +18,7 @@ export default class MessageEditor extends React.Component {
       ref={ form => (this.messageEditorForm = form) }
       onSubmit={ event => event.preventDefault() }
     >
-      <FormGroup>
-        <ControlLabel>Title</ControlLabel>
-        <FormControl
-          type="text"
-          name="title"
-          defaultValue={ doc && doc.title }
-          placeholder="Oh, The Places You'll Go!"
-        />
-      </FormGroup>
+
       <FormGroup>
         <ControlLabel>Message</ControlLabel>
         <FormControl

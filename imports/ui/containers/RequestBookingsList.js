@@ -8,7 +8,7 @@ const composer = (params, onData) => {
   const subscription = Meteor.subscribe('bookings.list');
   if (subscription.ready()) {
     //return array of object that have same userId
-    const bookings = Bookings.find({receiveId:Meteor.userId(),status:"false"}).map(function (doc) {
+    const bookings = Bookings.find({receiveId:Meteor.userId(),status:"false"}, {sort: {date: -1}}).map(function (doc) {
       return doc;
     })
     console.log(bookings);

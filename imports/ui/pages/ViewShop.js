@@ -34,11 +34,13 @@ const handleRemove = (history, _id) => {
   }
 };
 //
-const handleSendMessage = (userId) => {
+const handleSendMessage = (userId, title) => {
   console.log("send");
   console.log(userId);
   receiveId = userId;
+  receiveName = title;
   console.log(receiveId);
+  console.log(receiveShopName);
 };
 
 const handleReview = (_id) => {
@@ -180,13 +182,13 @@ const ViewShop = ({ doc, history }) => {
                   <p>1500 Bath</p><br/>
                   <Link to="/messages/new">
                     <ButtonGroup vertical block>
-                    <Button bsSize="large" onClick={() => handleSendMessage(doc.userId)}>ติดต่อสอบถาม</Button>
+                    <Button bsSize="large" onClick={() => handleSendMessage(doc.userId, doc.title)}>ติดต่อสอบถาม</Button>
                     </ButtonGroup>
                   </Link>
                   <div className="JDT13"></div>
                   <Link to="/bookings/new">
                     <ButtonGroup vertical block>
-                    <Button bsStyle="primary" bsSize="large" onClick={() => handleSendMessage(doc.userId)}>จองเลย</Button>
+                    <Button bsStyle="primary" bsSize="large" onClick={() => handleSendMessage(doc.userId, doc.title)}>จองเลย</Button>
                     </ButtonGroup>
                   </Link>
                 </Col>
