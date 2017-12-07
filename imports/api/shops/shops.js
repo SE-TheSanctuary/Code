@@ -26,7 +26,7 @@ Shops.schema = new SimpleSchema({
     type: String,
     label: 'The type of the pet.', //here
   },
-  detail1: {
+  price: {
     type: String,
     label: 'The detail1 of the document.',
   },
@@ -42,6 +42,30 @@ Shops.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
+  tel: {
+    type: String,
+    label: 'The detail2 of the document.',
+  },
+  lat: {
+    type: String,
+    label: 'The detail2 of the document.',
+  },
+  long: {
+    type: String,
+    label: 'The detail2 of the document.',
+  },
+  pic1: {
+    type: String,
+    label: 'The detail2 of the document.',
+  },
+  pic2: {
+    type: String,
+    label: 'The detail2 of the document.',
+  },
+  pic3: {
+    type: String,
+    label: 'The detail2 of the document.',
+  },
 });
 
 Shops.attachSchema(Shops.schema);
@@ -49,8 +73,14 @@ Shops.attachSchema(Shops.schema);
 Factory.define('shop', Shops, {
   title: () => 'Factory Title',
   petType: () => 'Factory breed', //here
-  detail1: () => 'Factory detail1',
+  price: () => 'Factory detail1',
   detail2: () => 'Factory detail2',
   userId: () => 'Factory userId',
   date: () => 'Factory creationDate', //here
+  tel: () => 'Factory tel',
+  lat: () => 'Factory lat',
+  long: () => 'Factory long',
+  pic1: () => 'Factory pic1',
+  pic2: () => 'Factory pic2',
+  pic3: () => 'Factory pic3',
 });

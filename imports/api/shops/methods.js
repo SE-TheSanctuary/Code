@@ -9,12 +9,19 @@ export const upsertShop = new ValidatedMethod({
 
   validate: new SimpleSchema({
     _id: { type: String, optional: true },
-    title: { type: String, optional: true },
-    petType:{ type: String, optional: true },
-    detail1: { type: String, optional: true },
-    userId: { type: String, optional: true },
-    detail2: { type: String, optional: true },
-    date: { type: String, optional: true },
+   title: { type: String, optional: true },
+   petType:{ type: String, optional: true },
+   price: { type: String, optional: true },
+   userId: { type: String, optional: true },
+   tel: { type: String, optional: true },
+   lat: { type: String, optional: true },
+   long: { type: String, optional: true },
+   pic1: { type: String, optional: true },
+   pic2: { type: String, optional: true },
+   pic3: { type: String, optional: true },
+
+   detail2: { type: String, optional: true },
+   date: { type: String, optional: true },
   }).validator(),
   run(shop) {
     return Shops.upsert({ _id: shop._id }, { $set: shop });
