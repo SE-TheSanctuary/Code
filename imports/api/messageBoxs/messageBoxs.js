@@ -6,13 +6,13 @@ const MessageBoxs = new Mongo.Collection('MessageBoxs');
 export default MessageBoxs;
 
 MessageBoxs.allow({
-  insert: () => true,
+  insert: () => false,
   update: () => true,
   remove: () => false,
 });
 
 MessageBoxs.deny({
-  insert: () => false,
+  insert: () => true,
   update: () => false,
   remove: () => true,
 });

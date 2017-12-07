@@ -66,13 +66,13 @@ const App = appProps => (
           <Authenticated exact path="/shops/:_id/edit" component={EditShop} {...appProps} />
           <Authenticated exact path="/shopping" component={Shopping} {...appProps} />
           <Authenticated exact path="/messageBoxs" component={MessageBoxs} {...appProps} />
-          <Authenticated exact path="/messageBoxs/new" component={NewMessageBox} {...appProps} />
-          <Authenticated exact path="/messageBoxs/:_id" component={Messages} {...appProps} />
-          <Authenticated exact path="/messageBoxs/:_id/edit" component={EditMessageBox} {...appProps} />
+          //<Authenticated exact path="/messageBoxs/new" component={NewMessageBox} {...appProps} />
+          //<Authenticated exact path="/messageBoxs/:_id" component={Messages} {...appProps} />
+          //<Authenticated exact path="/messageBoxs/:_id/edit" component={EditMessageBox} {...appProps} />
           //<Authenticated exact path="/messages" component={Messages} {...appProps} />
           <Authenticated exact path="/messages/new" component={NewMessage} {...appProps} />
           //<Authenticated exact path="/messages/:_id" component={ViewMessage} {...appProps} />
-          <Authenticated exact path="/messages/:_id/edit" component={EditMessage} {...appProps} />
+          //<Authenticated exact path="/messages/:_id/edit" component={EditMessage} {...appProps} />
           <Authenticated exact path="/bookings" component={Bookings} {...appProps} />
           <Authenticated exact path="/bookings/new" component={NewBooking} {...appProps} />
           <Authenticated exact path="/bookings/:_id" component={ViewBooking} {...appProps} />
