@@ -58,9 +58,9 @@ const ViewDocument = ({ doc, history }) => {
                   { doc && doc.petType }
                 </div>
                 <div className="JDT17">
-                  <div className="pet-text">UserId</div>
+                  <div className="pet-text">PetId</div>
                   <br/>
-                  { doc && doc.userId }
+                  { doc && doc._id }
                 </div>
                 <div className="JDT16">
                   <div className="pet-text">Optional</div>

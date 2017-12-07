@@ -1,14 +1,14 @@
 import React from 'react';
-import { Jumbotron } from 'react-bootstrap';
+import { Jumbotron,Row,Col } from 'react-bootstrap';
 
 
 const Index = () => (
-  <div className="Index">
+  <div>
     <Jumbotron className="text-center">
-      <h2>Base</h2>
-      <p>A starting point for Meteor applications.</p>
-      <p><a className="btn btn-success" href="https://themeteorchef.com/base" role="button">Read the Documentation</a></p>
-      <p style={ { fontSize: '16px', color: '#aaa' } }>Currently at v4.14.0</p>
+      <img alt="640x360" src="/pet-icon.png" responsive/>
+      <h2 className="JDT11">THE</h2>
+      <p>SANCTUARY</p>
+      <p style={ { fontSize: '16px', color: '#aaa' } }>the pet hotel booking</p>
     </Jumbotron>
   </div>
 );
