@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
+import { ButtonToolbar, ButtonGroup, Button,Panel,ListGroup,ListGroupItem, } from 'react-bootstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { removeBooking } from '../../api/bookings/methods';
 import NotFound from './NotFound';
@@ -59,7 +59,7 @@ const ViewBooking = ({ doc, history }) => {
       doc.status == "false" ?
         <div className="ViewBooking">
           <div className="page-header clearfix">
-            <h4 className="pull-left">{ doc && doc.title }</h4>
+            <h4 className="pull-left">{ doc && doc.customerName }</h4>
             <ButtonToolbar className="pull-right">
               <ButtonGroup bsSize="small">
                 <Button
@@ -69,31 +69,46 @@ const ViewBooking = ({ doc, history }) => {
               </ButtonGroup>
             </ButtonToolbar>
           </div>
-          bookingpName: { doc && doc.title }<br/>
-          bookingOwnerId: { doc && doc.userId }<br/>
-          bookingDetail1: { doc && doc.detail1 }<br/>
-          bookingDetail2: { doc && doc.detail2 }<br/>
-          bookingStatus: { doc && doc.status }
+
+          <Panel collapsible defaultExpanded header="Booking Detail">
+            <ListGroup fill>
+              <ListGroupItem>Name: {doc.customerName}</ListGroupItem>
+              <ListGroupItem>reserved shop: {doc.shopName}}</ListGroupItem>
+              <ListGroupItem>Tel.: {doc.title}}</ListGroupItem>
+              <ListGroupItem>Detail: {doc.detail2}}</ListGroupItem>
+              <ListGroupItem>Status: {doc.status}}</ListGroupItem>
+              <ListGroupItem>Date Add: {doc.date}}</ListGroupItem>
+              <ListGroupItem>reserved date: {doc.startDate1}/{doc.startDate2}/{doc.startDate3} - {doc.endDate1}/{doc.endDate2}/{doc.endDate3}</ListGroupItem>
+              <ListGroupItem>&hellip;</ListGroupItem>
+            </ListGroup>
+          </Panel>
         </div>:
           doc.status == "Accept" ?
             <div className="ViewBooking">
               <div className="page-header clearfix">
-                <h4 className="pull-left">{ doc && doc.title }</h4>
+                <h4 className="pull-left">{ doc && doc.customerName }</h4>
                 <ButtonToolbar className="pull-right">
                   <ButtonGroup bsSize="small">
 
                   </ButtonGroup>
                 </ButtonToolbar>
               </div>
-              bookingpName: { doc && doc.title }<br/>
-              bookingOwnerId: { doc && doc.userId }<br/>
-              bookingDetail1: { doc && doc.detail1 }<br/>
-              bookingDetail2: { doc && doc.detail2 }<br/>
-              bookingStatus: { doc && doc.status }
+              <Panel collapsible defaultExpanded header="Booking Detail">
+                <ListGroup fill>
+                  <ListGroupItem>Name: {doc.customerName}</ListGroupItem>
+                  <ListGroupItem>reserved shop: {doc.shopName}}</ListGroupItem>
+                  <ListGroupItem>Tel.: {doc.title}}</ListGroupItem>
+                  <ListGroupItem>Detail: {doc.detail2}}</ListGroupItem>
+                  <ListGroupItem>Status: {doc.status}}</ListGroupItem>
+                  <ListGroupItem>Date Add: {doc.date}}</ListGroupItem>
+                  <ListGroupItem>reserved date: {doc.startDate1}/{doc.startDate2}/{doc.startDate3} - {doc.endDate1}/{doc.endDate2}/{doc.endDate3}</ListGroupItem>
+                  <ListGroupItem>&hellip;</ListGroupItem>
+                </ListGroup>
+              </Panel>
             </div>:
             <div className="ViewBooking">
               <div className="page-header clearfix">
-                <h4 className="pull-left">{ doc && doc.title }</h4>
+                <h4 className="pull-left">{ doc && doc.customerName }</h4>
                 <ButtonToolbar className="pull-right">
                   <ButtonGroup bsSize="small">
                     <Button
@@ -103,16 +118,23 @@ const ViewBooking = ({ doc, history }) => {
                   </ButtonGroup>
                 </ButtonToolbar>
               </div>
-              bookingpName: { doc && doc.title }<br/>
-              bookingOwnerId: { doc && doc.userId }<br/>
-              bookingDetail1: { doc && doc.detail1 }<br/>
-              bookingDetail2: { doc && doc.detail2 }<br/>
-              bookingStatus: { doc && doc.status }
+              <Panel collapsible defaultExpanded header="Booking Detail">
+                <ListGroup fill>
+                  <ListGroupItem>Name: {doc.customerName}</ListGroupItem>
+                  <ListGroupItem>reserved shop: {doc.shopName}</ListGroupItem>
+                  <ListGroupItem>Tel.: {doc.title}</ListGroupItem>
+                  <ListGroupItem>Detail: {doc.detail2}</ListGroupItem>
+                  <ListGroupItem>Status: {doc.status}</ListGroupItem>
+                  <ListGroupItem>Date Add: {doc.date}</ListGroupItem>
+                  <ListGroupItem>reserved date: {doc.startDate1}/{doc.startDate2}/{doc.startDate3} - {doc.endDate1}/{doc.endDate2}/{doc.endDate3}</ListGroupItem>
+                  <ListGroupItem>&hellip;</ListGroupItem>
+                </ListGroup>
+              </Panel>
             </div>:
       doc.status == "false" ?
         <div className="ViewBooking">
           <div className="page-header clearfix">
-            <h4 className="pull-left">{ doc && doc.title }</h4>
+            <h4 className="pull-left">{ doc && doc.customerName }</h4>
             <ButtonToolbar className="pull-right">
               <ButtonGroup bsSize="small">
                 <Button onClick={() => handleAccept(history, doc._id)}
@@ -122,26 +144,40 @@ const ViewBooking = ({ doc, history }) => {
               </ButtonGroup>
             </ButtonToolbar>
           </div>
-          bookingpName: { doc && doc.title }<br/>
-          bookingOwnerId: { doc && doc.userId }<br/>
-          bookingDetail1: { doc && doc.detail1 }<br/>
-          bookingDetail2: { doc && doc.detail2 }<br/>
-          bookingStatus: { doc && doc.status }
+          <Panel collapsible defaultExpanded header="Booking Detail">
+            <ListGroup fill>
+              <ListGroupItem>Name: {doc.customerName}</ListGroupItem>
+              <ListGroupItem>reserved shop: {doc.shopName}}</ListGroupItem>
+              <ListGroupItem>Tel.: {doc.title}}</ListGroupItem>
+              <ListGroupItem>Detail: {doc.detail2}}</ListGroupItem>
+              <ListGroupItem>Status: {doc.status}}</ListGroupItem>
+              <ListGroupItem>Date Add: {doc.date}}</ListGroupItem>
+              <ListGroupItem>reserved date: {doc.startDate1}/{doc.startDate2}/{doc.startDate3} - {doc.endDate1}/{doc.endDate2}/{doc.endDate3}</ListGroupItem>
+              <ListGroupItem>&hellip;</ListGroupItem>
+            </ListGroup>
+          </Panel>
         </div>:
         <div className="ViewBooking">
           <div className="page-header clearfix">
-            <h4 className="pull-left">{ doc && doc.title }</h4>
+            <h4 className="pull-left">{ doc && doc.customerName }</h4>
             <ButtonToolbar className="pull-right">
               <ButtonGroup bsSize="small">
                 <Button>Message</Button>
               </ButtonGroup>
             </ButtonToolbar>
           </div>
-          bookingpName: { doc && doc.title }<br/>
-          bookingOwnerId: { doc && doc.userId }<br/>
-          bookingDetail1: { doc && doc.detail1 }<br/>
-          bookingDetail2: { doc && doc.detail2 }<br/>
-          bookingStatus: { doc && doc.status }
+          <Panel collapsible defaultExpanded header="Booking Detail">
+            <ListGroup fill>
+              <ListGroupItem>Name: {doc.customerName}</ListGroupItem>
+              <ListGroupItem>reserved shop: {doc.shopName}}</ListGroupItem>
+              <ListGroupItem>Tel.: {doc.title}}</ListGroupItem>
+              <ListGroupItem>Detail: {doc.detail2}}</ListGroupItem>
+              <ListGroupItem>Status: {doc.status}}</ListGroupItem>
+              <ListGroupItem>Date Add: {doc.date}}</ListGroupItem>
+              <ListGroupItem>reserved date: {doc.startDate1}/{doc.startDate2}/{doc.startDate3} - {doc.endDate1}/{doc.endDate2}/{doc.endDate3}</ListGroupItem>
+              <ListGroupItem>&hellip;</ListGroupItem>
+            </ListGroup>
+          </Panel>
         </div>
   ) : <NotFound />;
 };
