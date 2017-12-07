@@ -61,7 +61,7 @@ const MessageBoxsList = ({ history, messageBoxs }) => (
                   <Image src="/messageBox2-icon.png" responsive />
                 </Col>
                 <Col xs={ 10 } sm={ 11 }>
-                  <b>{ shopOwnerName }</b><br/>
+                  <b>{ customerName }</b><br/>
                 </Col>
               </Row>
             </ListGroupItem>:
@@ -71,7 +71,7 @@ const MessageBoxsList = ({ history, messageBoxs }) => (
                   <Image src="/messageBox1-icon.png" responsive />
                 </Col>
                 <Col xs={ 10 } sm={ 11 }>
-                  <b>{ shopOwnerName }</b><br/>
+                  <b>{ customerName }</b><br/>
                 </Col>
               </Row>
             </ListGroupItem>
