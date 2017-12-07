@@ -59,9 +59,11 @@ const userRole = () => {
   return user ? `${profile.roles}` : '';
 };
 
+
 const ViewShop = ({ doc, history }) => {
   console.log("ViewShop");
   console.log(doc.userId);
+
   return doc ? (
     userID() == doc.userId ?
       <div className="ViewShop">
@@ -82,22 +84,22 @@ const ViewShop = ({ doc, history }) => {
           <div>
             <div>
               <Row>
-                <Col xs={ 12 } sm={ 8 }>
+                <Col xs={ 12 } md ={8} sm={ 8 }>
                 <div>
                   <Carousel>
                     <Carousel.Item>
-                      <img alt="640x360" src="/pet1.jpg" responsive/>
+                      <img alt="640x360" src={doc.pic1} responsive/>
                     </Carousel.Item>
                     <Carousel.Item>
-                      <img alt="640x360" src="/pet2.jpg" responsive/>
+                      <img alt="640x360" src={doc.pic2} responsive/>
                     </Carousel.Item>
                     <Carousel.Item>
-                      <img alt="640x360" src="/pet3.jpg" responsive/>
+                      <img alt="640x360" src={doc.pic3} responsive/>
                     </Carousel.Item>
                   </Carousel>
                   </div>
                 </Col>
-                <Col xs={ 12 } sm={ 4 }>
+                <Col xs={ 12 } md ={4} sm={ 4 }>
                 <br/>
                   <h4>Description</h4>
                     <div className="description">
@@ -107,7 +109,7 @@ const ViewShop = ({ doc, history }) => {
                     </div>
                   <br/>
                   <h4>Starting price</h4>
-                  <p>1500 Bath</p><br/>
+                  <p>{doc.price} Bath</p><br/>
                   <ButtonGroup vertical block>
                     <Button bsSize="large" disabled>ติดต่อสอบถาม</Button>
                   </ButtonGroup>
@@ -121,12 +123,12 @@ const ViewShop = ({ doc, history }) => {
               <div className="page-header clearfix"></div>
               <div className="map">
                 <GoogleMapReact
-                  defaultCenter={{lat: 13.728990, lng: 100.775297}}
+                  defaultCenter={{lat:parseFloat(doc.lat), lng:parseFloat(doc.long)}}
                   defaultZoom={17}
                     >
                   <AnyReactComponent
-                    lat={13.728990}
-                    lng={100.775297}
+                    lat={parseFloat(doc.lat)}
+                    lng={parseFloat(doc.long)}
                     text={'Shop'}
                   />
               </GoogleMapReact>
@@ -134,6 +136,28 @@ const ViewShop = ({ doc, history }) => {
               </div>
             </div>
           </div>
+
+          <div className="space-1"></div>
+          <div className="page-header clearfix">
+          <h4 className="pull-left">Review</h4><ButtonToolbar className="pull-right">
+                <ButtonGroup bsSize="small">
+                  <Link to="/reviews/new">
+                    <Button
+                      onClick={() => handleReview(doc._id)}
+                      className="pull-right" disabled
+                    >review</Button>
+                  </Link>
+                </ButtonGroup>
+              </ButtonToolbar>
+          </div>
+
+          <div className="JDT18">
+              <Reviews history={history} />
+          </div>
+
+          <div className="page-header clearfix"></div>
+
+
       </div> :
       userRole() == "customer" ?
       <div className="ViewShop">
@@ -152,22 +176,22 @@ const ViewShop = ({ doc, history }) => {
           <div>
             <div>
               <Row>
-                <Col xs={ 12 } sm={ 8 }>
+                <Col xs={ 12 } md ={8} sm={ 8 }>
                 <div>
                   <Carousel>
                     <Carousel.Item>
-                      <img alt="640x360" src="/pet1.jpg" responsive/>
+                      <img alt="640x360" src={doc.pic1} responsive/>
                     </Carousel.Item>
                     <Carousel.Item>
-                      <img alt="640x360" src="/pet2.jpg" responsive/>
+                      <img alt="640x360" src={doc.pic2} responsive/>
                     </Carousel.Item>
                     <Carousel.Item>
-                      <img alt="640x360" src="/pet3.jpg" responsive/>
+                      <img alt="640x360" src={doc.pic3} responsive/>
                     </Carousel.Item>
                   </Carousel>
                   </div>
                 </Col>
-                <Col xs={ 12 } sm={ 4 }>
+                <Col xs={ 12 } md ={4} sm={ 4 }>
                 <br/>
                   <h4>Description</h4>
                     <div className="description">
@@ -177,7 +201,7 @@ const ViewShop = ({ doc, history }) => {
                     </div>
                   <br/>
                   <h4>Starting price</h4>
-                  <p>1500 Bath</p><br/>
+                  <p>{doc.price} Bath</p><br/>
                   <Link to="/messages/new">
                     <ButtonGroup vertical block>
                     <Button bsSize="large" onClick={() => handleSendMessage(doc.userId)}>ติดต่อสอบถาม</Button>
@@ -196,12 +220,12 @@ const ViewShop = ({ doc, history }) => {
               <div className="page-header clearfix"></div>
               <div className="map">
                 <GoogleMapReact
-                  defaultCenter={{lat: 13.728990, lng: 100.775297}}
+                  defaultCenter={{lat:parseFloat(doc.lat), lng:parseFloat(doc.long)}}
                   defaultZoom={17}
                     >
                   <AnyReactComponent
-                    lat={13.728990}
-                    lng={100.775297}
+                    lat={parseFloat(doc.lat)}
+                    lng={parseFloat(doc.long)}
                     text={'Shop'}
                   />
               </GoogleMapReact>
