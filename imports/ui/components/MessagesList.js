@@ -12,7 +12,7 @@ const MessagesList = ({ history, messages }) => (
   messages.length > 0 ? <ListGroup className="MessagesList">
     {messages.map(({ _id, title, userId }) => (
       userId == Meteor.userId() ?
-        <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
+        <ListGroupItem key={ _id } >
           <Row>
             <Col xs={ 2 } sm={ 1 }>
               <Image src="/message-icon.png" responsive />
@@ -25,7 +25,7 @@ const MessagesList = ({ history, messages }) => (
             </Col>
           </Row>
         </ListGroupItem>:
-        <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
+        <ListGroupItem key={ _id } >
           <Row>
             <Col xs={ 10 } sm={ 2 } smOffset={8}>
               <b>{ title }</b><br/>
