@@ -257,25 +257,88 @@ const ViewShop = ({ doc, history }) => {
           <div className="page-header clearfix"></div>
 
       </div> :
-        <div className="ViewShop">
+      <div className="ViewShop">
+        <div className="page-header clearfix">
+        <h4 className="pull-left">{ doc && doc.title }</h4>
+          
+        </div>
+          <div>
+            <div>
+              <Row>
+                <Col xs={ 12 } md ={8} sm={ 8 }>
+                <div>
+                  <Carousel>
+                    <Carousel.Item>
+                      <img alt="640x360" src={doc.pic1} responsive/>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <img alt="640x360" src={doc.pic2} responsive/>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                      <img alt="640x360" src={doc.pic3} responsive/>
+                    </Carousel.Item>
+                  </Carousel>
+                  </div>
+                </Col>
+                <Col xs={ 12 } md ={4} sm={ 4 }>
+                <br/>
+                  <h4>Description</h4>
+                    <div className="description">
+                      <p>
+                        { doc && doc.detail2 }
+                      </p>
+                    </div>
+                  <br/>
+                  <h4>Starting price</h4>
+                  <p>{doc.price} Bath</p><br/>
+                  <ButtonGroup vertical block>
+                    <Button bsSize="large" disabled>ติดต่อสอบถาม</Button>
+                  </ButtonGroup>
+                  <ButtonGroup vertical block>
+                    <Button bsStyle="primary" bsSize="large" disabled>จองเลย</Button>
+                  </ButtonGroup>
+                </Col>
+              </Row>
+              <div className="space-1"></div>
+              <h4 className="pull-left">Shop location</h4>
+              <div className="page-header clearfix"></div>
+              <div className="map">
+                <GoogleMapReact
+                  defaultCenter={{lat:parseFloat(doc.lat), lng:parseFloat(doc.long)}}
+                  defaultZoom={17}
+                    >
+                  <AnyReactComponent
+                    lat={parseFloat(doc.lat)}
+                    lng={parseFloat(doc.long)}
+                    text={'Shop'}
+                  />
+              </GoogleMapReact>
+              <div className="space-1"></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-1"></div>
           <div className="page-header clearfix">
-            <h4 className="pull-left">My Message</h4>
-              <ButtonToolbar className="pull-right">
+          <h4 className="pull-left">Review</h4><ButtonToolbar className="pull-right">
                 <ButtonGroup bsSize="small">
-                  <Link to="/messages/new">
+                  <Link to="/reviews/new">
                     <Button
-                      onClick={() => handleSendMessage(doc.userId)}
-                      bsStyle="success"
-                      className="pull-right"
-                    >send message</Button>
+                      onClick={() => handleReview(doc._id)}
+                      className="pull-right" disabled
+                    >review</Button>
                   </Link>
                 </ButtonGroup>
               </ButtonToolbar>
           </div>
-        shopName: { doc && doc.title }<br/>
-        shopOwnerId: { doc && doc.userId }<br/>
-        shopDetail1: { doc && doc.detail1 }<br/>
-        shopDetail2: { doc && doc.detail2 }
+
+          <div className="JDT18">
+              <Reviews history={history} />
+          </div>
+
+          <div className="page-header clearfix"></div>
+
+
       </div>
   ) : <NotFound />;
 };
