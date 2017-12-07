@@ -12,8 +12,8 @@ const handleUpsert = () => {
   const confirmation = doc && doc._id ? 'Review updated!' : 'Review added!';
   const upsert = {
     title: document.querySelector('[name="title"]').value.trim(),
-    petType:document.querySelector('[name="petType"]').value.trim(),
-    detail1: document.querySelector('[name="detail1"]').value.trim(),
+    star:document.querySelector('[name="star"]').value.trim(),
+    detail1: document.querySelector('[name="detail2"]').value.trim(),
     detail2: document.querySelector('[name="detail2"]').value.trim(),
     userId:Meteor.userId(),
     date: new Date().toISOString(),

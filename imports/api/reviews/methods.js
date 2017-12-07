@@ -10,7 +10,7 @@ export const upsertReview = new ValidatedMethod({
   validate: new SimpleSchema({
     _id: { type: String, optional: true },
     title: { type: String, optional: true },
-    petType:{ type: String, optional: true },
+    star:{ type: String, optional: true },
     detail1: { type: String, optional: true },
     userId: { type: String, optional: true },
     detail2: { type: String, optional: true },

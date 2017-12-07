@@ -22,7 +22,7 @@ Reviews.schema = new SimpleSchema({
     type: String,
     label: 'The title of the document.',
   },
-  petType: {
+  star: {
     type: String,
     label: 'The type of the pet.', //here
   },
@@ -52,7 +52,7 @@ Reviews.attachSchema(Reviews.schema);
 
 Factory.define('review', Reviews, {
   title: () => 'Factory Title',
-  petType: () => 'Factory breed', //here
+  star: () => 'Factory star', //here
   detail1: () => 'Factory detail1',
   detail2: () => 'Factory detail2',
   userId: () => 'Factory userId',

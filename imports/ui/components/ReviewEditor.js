@@ -26,23 +26,15 @@ export default class ReviewEditor extends React.Component {
         />
       </FormGroup>
       <FormGroup controlId="formControlsSelect">
-        <ControlLabel>Select</ControlLabel>
-        <FormControl componentClass="select" name="petType" placeholder="all">
-          <option value="all">all</option>
-          <option value="dog">dog</option>
-          <option value="cat">cat</option>
-          <option value="bird">bird</option>
+        <ControlLabel>Give a star</ControlLabel>
+        <FormControl componentClass="select" name="star" placeholder="5">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </FormControl>
         </FormGroup>
-      <FormGroup>
-        <ControlLabel>Detail</ControlLabel>
-        <FormControl
-          type="text"
-          name="detail1"
-          defaultValue={ doc && doc.detail1 }
-          placeholder="Oh, The Places You'll Go!"  //here
-        />
-      </FormGroup>
       <FormGroup>
         <ControlLabel>Detail</ControlLabel>
         <FormControl
