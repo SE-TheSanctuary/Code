@@ -12,6 +12,20 @@ export default class BookingEditor extends React.Component {
   }
 
   render() {
+    const getInitialState = () => {
+      value = new Date().toISOString();
+      return {
+        value: value
+      }
+    }
+    value = new Date().toISOString();
+    const handleChange = (value, formattedValue) => {
+      this.setState({
+        value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
+        formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
+      });
+    }
+
     const { doc } = this.props;
     return (<form
       ref={ form => (this.bookingEditorForm = form) }
@@ -44,6 +58,9 @@ export default class BookingEditor extends React.Component {
           placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
         />
       </FormGroup>
+      <ControlLabel>Label</ControlLabel>
+        <DatePicker id="example-datepicker" value={value} onChange={this.handleChange} />
+      <HelpBlock>Help</HelpBlock>
       <Button type="submit" bsStyle="success">
         { doc && doc._id ? 'Save Changes' : 'Add Document' }
       </Button>
