@@ -10,10 +10,10 @@ const ReviewsList = ({ history, reviews }) => (
     {reviews.map(({ _id, title,detail1 ,userId,date,star}) => (
       <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
         <Row>
-          <Col xs={ 2 } md={1} sm={ 2 }>
+          <Col xs={ 3 } md={1} sm={ 2 }>
             <div className="circle">{star}</div>
           </Col>
-          <Col xs={ 10 } md={11} sm={ 10 }>
+          <Col xs={ 9 } md={11} sm={ 10 }>
             <div className="JDT19">
               <div className="JDT20">Date:{date} User:{userId} </div>
               <b>{ title }</b><br/>
