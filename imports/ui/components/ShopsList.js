@@ -7,7 +7,7 @@ const handleNav = (history, _id) => {
 //
 const ShopsList = ({ history, shops }) => (
   shops.length > 0 ? <ListGroup className="ShopsList">
-    {shops.map(({ _id, title,detail1 }) => (
+    {shops.map(({ _id, title, price, petType, tel }) => (
       <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
         <Row>
           <Col xs={ 2 } sm={ 1 }>
@@ -15,9 +15,9 @@ const ShopsList = ({ history, shops }) => (
           </Col>
           <Col xs={ 10 } sm={ 11 }>
             <b>{ title }</b><br/>
-            owner:{ detail1 }<br/>
-            tel:<br/>
-            location:
+            Accept Pet Type : { petType }<br/>
+            Starting price : { price }<br/>
+            Tel : { tel }
           </Col>
         </Row>
       </ListGroupItem>

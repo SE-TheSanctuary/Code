@@ -19,7 +19,7 @@ const MessagesList = ({ history, messages }) => (
       <ListGroupItem key={ _id } >
         <Row>
           <Col xs={ 2 } sm={ 1 }>
-            <Image src="/message-icon.png" responsive />
+            <Image src="/message1-icon.png" responsive />
           </Col>
           <Col xs={ 10 } sm={ 11 }>
             <b>{ title }</b><br/>
