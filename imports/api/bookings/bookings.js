@@ -46,26 +46,6 @@ Bookings.schema = new SimpleSchema({
     type: String,
     label: 'The userId of the document.', //here
   },
-  shopName: {
-    type: String,
-    label: 'The userId of the document.', //here
-  },
-  shopOwnerName: {
-    type: String,
-    label: 'The userId of the document.', //here
-  },
-  customerName: {
-    type: String,
-    label: 'The userId of the document.', //here
-  },
-  beginSelectday: {
-    type: String,
-    label: 'The userId of the document.', //here
-  },
-  lastSelectday: {
-    type: String,
-    label: 'The userId of the document.', //here
-  },
 });
 
 Bookings.attachSchema(Bookings.schema);
@@ -78,9 +58,4 @@ Factory.define('booking', Bookings, {
   date: () => 'Factory creationDate', //here
   receiveId: () => 'Factory receiveId', //here
   status: () => 'Factory status', //here
-  shopName: () => 'Factory status', //here
-  shopOwnerName: () => 'Factory status', //here
-  customerName: () => 'Factory status', //here
-  beginSelectday: () => 'Factory status', //here
-  lastSelectday: () => 'Factory status', //here
 });
