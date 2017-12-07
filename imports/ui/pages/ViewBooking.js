@@ -73,11 +73,11 @@ const ViewBooking = ({ doc, history }) => {
           <Panel collapsible defaultExpanded header="Booking Detail">
             <ListGroup fill>
               <ListGroupItem>Name: {doc.customerName}</ListGroupItem>
-              <ListGroupItem>reserved shop: {doc.shopName}}</ListGroupItem>
-              <ListGroupItem>Tel.: {doc.title}}</ListGroupItem>
-              <ListGroupItem>Detail: {doc.detail2}}</ListGroupItem>
-              <ListGroupItem>Status: {doc.status}}</ListGroupItem>
-              <ListGroupItem>Date Add: {doc.date}}</ListGroupItem>
+              <ListGroupItem>reserved shop: {doc.shopName}</ListGroupItem>
+              <ListGroupItem>Tel.: {doc.title}</ListGroupItem>
+              <ListGroupItem>Detail: {doc.detail2}</ListGroupItem>
+              <ListGroupItem>Status: {doc.status}</ListGroupItem>
+              <ListGroupItem>Date Add: {doc.date}</ListGroupItem>
               <ListGroupItem>reserved date: {doc.startDate1}/{doc.startDate2}/{doc.startDate3} - {doc.endDate1}/{doc.endDate2}/{doc.endDate3}</ListGroupItem>
               <ListGroupItem>&hellip;</ListGroupItem>
             </ListGroup>
@@ -97,10 +97,10 @@ const ViewBooking = ({ doc, history }) => {
                 <ListGroup fill>
                   <ListGroupItem>Name: {doc.customerName}</ListGroupItem>
                   <ListGroupItem>reserved shop: {doc.shopName}}</ListGroupItem>
-                  <ListGroupItem>Tel.: {doc.title}}</ListGroupItem>
-                  <ListGroupItem>Detail: {doc.detail2}}</ListGroupItem>
-                  <ListGroupItem>Status: {doc.status}}</ListGroupItem>
-                  <ListGroupItem>Date Add: {doc.date}}</ListGroupItem>
+                  <ListGroupItem>Tel.: {doc.title}</ListGroupItem>
+                  <ListGroupItem>Detail: {doc.detail2}</ListGroupItem>
+                  <ListGroupItem>Status: {doc.status}</ListGroupItem>
+                  <ListGroupItem>Date Add: {doc.date}</ListGroupItem>
                   <ListGroupItem>reserved date: {doc.startDate1}/{doc.startDate2}/{doc.startDate3} - {doc.endDate1}/{doc.endDate2}/{doc.endDate3}</ListGroupItem>
                   <ListGroupItem>&hellip;</ListGroupItem>
                 </ListGroup>
@@ -148,10 +148,10 @@ const ViewBooking = ({ doc, history }) => {
             <ListGroup fill>
               <ListGroupItem>Name: {doc.customerName}</ListGroupItem>
               <ListGroupItem>reserved shop: {doc.shopName}}</ListGroupItem>
-              <ListGroupItem>Tel.: {doc.title}}</ListGroupItem>
-              <ListGroupItem>Detail: {doc.detail2}}</ListGroupItem>
-              <ListGroupItem>Status: {doc.status}}</ListGroupItem>
-              <ListGroupItem>Date Add: {doc.date}}</ListGroupItem>
+              <ListGroupItem>Tel.: {doc.title}</ListGroupItem>
+              <ListGroupItem>Detail: {doc.detail2}</ListGroupItem>
+              <ListGroupItem>Status: {doc.status}</ListGroupItem>
+              <ListGroupItem>Date Add: {doc.date}</ListGroupItem>
               <ListGroupItem>reserved date: {doc.startDate1}/{doc.startDate2}/{doc.startDate3} - {doc.endDate1}/{doc.endDate2}/{doc.endDate3}</ListGroupItem>
               <ListGroupItem>&hellip;</ListGroupItem>
             </ListGroup>
@@ -170,10 +170,10 @@ const ViewBooking = ({ doc, history }) => {
             <ListGroup fill>
               <ListGroupItem>Name: {doc.customerName}</ListGroupItem>
               <ListGroupItem>reserved shop: {doc.shopName}}</ListGroupItem>
-              <ListGroupItem>Tel.: {doc.title}}</ListGroupItem>
-              <ListGroupItem>Detail: {doc.detail2}}</ListGroupItem>
-              <ListGroupItem>Status: {doc.status}}</ListGroupItem>
-              <ListGroupItem>Date Add: {doc.date}}</ListGroupItem>
+              <ListGroupItem>Tel.: {doc.title}</ListGroupItem>
+              <ListGroupItem>Detail: {doc.detail2}</ListGroupItem>
+              <ListGroupItem>Status: {doc.status}</ListGroupItem>
+              <ListGroupItem>Date Add: {doc.date}</ListGroupItem>
               <ListGroupItem>reserved date: {doc.startDate1}/{doc.startDate2}/{doc.startDate3} - {doc.endDate1}/{doc.endDate2}/{doc.endDate3}</ListGroupItem>
               <ListGroupItem>&hellip;</ListGroupItem>
             </ListGroup>
