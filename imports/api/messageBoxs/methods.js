@@ -12,7 +12,8 @@ export const upsertMessageBox = new ValidatedMethod({
     customer: { type: String, optional: true },
     shopOwner: { type: String, optional: true },
     date: { type: String, optional: true },
-    status: { type: String, optional: true },
+    statusCustomer: { type: String, optional: true },
+    statusShopOwner: { type: String, optional: true },
   }).validator(),
   run(messageBox) {
     return MessageBoxs.upsert({ _id: messageBox._id }, { $set: messageBox });

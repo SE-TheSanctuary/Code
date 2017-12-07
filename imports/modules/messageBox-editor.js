@@ -16,19 +16,21 @@ const userRole = () => {
 const handleUpsert = () => {
   const { doc } = component.props;
   const confirmation = doc && doc._id ? 'MessageBox updated!' : 'MessageBox added!';
-  if(userRole == 'customer'){
+  if(userRole() == 'customer'){
     const upsert = {
       customer: Meteor.userId(),
       shopOwner: receiveId,
       date: new Date().toISOString(),
-      status: "false",
+      statusCustomer: "read",
+      statusShopOwner: "false",
     };
   } else {
     const upsert = {
       customer: receiveId,
       shopOwner: Meteor.userId(),
       date: new Date().toISOString(),
-      status: "false",
+      statusCustomer: "false",
+      statusShopOwner: "read",
     };
   }
 
@@ -58,7 +60,10 @@ const validate = () => {
       date: {
         required: true,
       },
-      status: {
+      statusCustomer: {
+        required: true,
+      },
+      statusShopOwner: {
         required: true,
       },
     },
@@ -72,7 +77,10 @@ const validate = () => {
       date: {
         required: 'This thneeds a body, please.',
       },
-      status: {
+      statusCustomer: {
+        required: 'This thneeds a body, please.',
+      },
+      statusShopOwner: {
         required: 'This thneeds a body, please.',
       },
     },
