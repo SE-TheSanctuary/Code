@@ -13,7 +13,7 @@ const handleTest = (history) => {
   history.push(`/shopping`);
 };
 
-
+//
 const Shops = ({ history }) => (
 
   <div className="Documents">
@@ -71,6 +71,7 @@ const Shops = ({ history }) => (
 Shops.propTypes = {
   history: PropTypes.object,
   filterKey: PropTypes.string,
+  sortKey: PropTypes.string,
 };
 
 export default Shops;
