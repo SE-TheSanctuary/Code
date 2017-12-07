@@ -6,10 +6,18 @@ import { upsertShop } from '../api/shops/methods.js';
 import './validation.js';
 
 let component;
+
+const userName = () => {
+  const user = Meteor.user();
+  const profile = user ? user.profile : '';
+  const name = profile ? profile.name : '';
+  return user ? `${name.first}` : '';
+};
 //
 const handleUpsert = () => {
   const { doc } = component.props;
   const confirmation = doc && doc._id ? 'Shop updated!' : 'Shop added!';
+  console.log(Meteor.user().profile)
   const upsert = {
     title: document.querySelector('[name="title"]').value.trim(),
     petType:document.querySelector('[name="petType"]').value.trim(),
@@ -24,6 +32,7 @@ const handleUpsert = () => {
 
     detail2: document.querySelector('[name="detail2"]').value.trim(),
     userId:Meteor.userId(),
+    shopOwner:userName(),
     date: new Date().toISOString(),
   };
 

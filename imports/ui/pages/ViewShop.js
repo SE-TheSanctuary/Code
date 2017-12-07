@@ -34,11 +34,11 @@ const handleRemove = (history, _id) => {
   }
 };
 //
-const handleSendMessage = (userId, title) => {
+const handleSendMessage = (userId, name) => {
   console.log("send");
   console.log(userId);
   receiveId = userId;
-  receiveName = title;
+  receiveName = name;
   console.log(receiveId);
   console.log(receiveShopName);
 };
@@ -206,13 +206,13 @@ const ViewShop = ({ doc, history }) => {
                   <p>{doc.price} Bath</p><br/>
                   <Link to="/messages/new">
                     <ButtonGroup vertical block>
-                    <Button bsSize="large" onClick={() => handleSendMessage(doc.userId, doc.title)}>ติดต่อสอบถาม</Button>
+                    <Button bsSize="large" onClick={() => handleSendMessage(doc.userId, doc.shopOwner)}>ติดต่อสอบถาม</Button>
                     </ButtonGroup>
                   </Link>
                   <div className="JDT13"></div>
                   <Link to="/bookings/new">
                     <ButtonGroup vertical block>
-                    <Button bsStyle="primary" bsSize="large" onClick={() => handleSendMessage(doc.userId, doc.title)}>จองเลย</Button>
+                    <Button bsStyle="primary" bsSize="large" onClick={() => handleSendMessage(doc.userId, doc.shopOwner)}>จองเลย</Button>
                     </ButtonGroup>
                   </Link>
                 </Col>
@@ -260,7 +260,7 @@ const ViewShop = ({ doc, history }) => {
       <div className="ViewShop">
         <div className="page-header clearfix">
         <h4 className="pull-left">{ doc && doc.title }</h4>
-          
+
         </div>
           <div>
             <div>
