@@ -2,6 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { DatePicker } from 'react-bootstrap-date-picker';
 import bookingEditor from '../../modules/booking-editor.js';
 
 export default class BookingEditor extends React.Component {

@@ -42,7 +42,7 @@ const ViewDocument = ({ doc, history }) => {
         <Row>
           <Col xs={ 12 } sm={ 4 }>
             <div className="pet-dog-bg">
-              <img alt="640x360" src={"/" +doc.petType+".png"} />
+              <img alt="640x360" src="/dog.png" responsive/>
             </div>
           </Col>
           <Col xs={ 12 } sm={ 8 }>
