@@ -14,7 +14,7 @@ const composer = (params, onData) => {
   const subscription = Meteor.subscribe('messages.list');
   if (subscription.ready()) {
     //return array of object that have same userId
-    const messages = Messages.find({messageBoxId:messageBoxId}).map(function (doc) {
+    const messages = Messages.find({messageBoxId:messageBoxId}, {sort: {date: -1}}).map(function (doc) {
       return doc;
     })
     console.log(messages);

@@ -18,17 +18,16 @@ const userRole = () => {
   return user ? `${profile.roles}` : '';
 };
 
+const userName = () => {
+  const user = Meteor.user();
+  const profile = user ? user.profile : '';
+  const name = profile ? profile.name : '';
+  return user ? `${name.first}` : '';
+};
 
 const handleUpsert = () => {
   var chk = "false";
   messageBoxId = "";
-  const upsertBox = {
-    customer: "false",
-    shopOwner: "false",
-    date: "false",
-    statusCustomer: "false",
-    statusShopOwner: "false",
-  };
 
   const subscription = Meteor.subscribe('messageBoxs.list');
 
@@ -36,7 +35,7 @@ const handleUpsert = () => {
 
     if(userRole() == 'customer'){
       console.log("helllo")
-      Tracker.autorun(function() {
+      Tracker.autorun(function(thisComp) {
         if (subscription.ready()) {
           //return array of object that have same userId
           const messageBoxs = MessageBoxs.find({customer:Meteor.userId(), shopOwner:receiveId}).map(function (doc) {
@@ -44,16 +43,21 @@ const handleUpsert = () => {
           })
           console.log(messageBoxs);
           if(messageBoxs.length==0){
-            upsertBox.customer = Meteor.userId()
-            upsertBox.shopOwner = receiveId
-            upsertBox.date = new Date().toISOString()
-            upsertBox.statusCustomer = "read"
-            upsertBox.statusShopOwner = "false"
+            const upsertBox = {
+              customer: Meteor.userId(),
+              customerName: userName(),
+              shopOwner: receiveId,
+              shopOwnerName: receiveName,
+              date: new Date().toISOString(),
+              statusCustomer: "read",
+              statusShopOwner: "false",
+            };
 
             upsertMessageBox.call(upsertBox, (error, response) => {
               if (error) {
                 console.log('danger');
               } else {
+                component.messageBoxEditorForm.reset();
                 console.log('success');
               }
             });
@@ -62,11 +66,12 @@ const handleUpsert = () => {
             messageBoxId = messageBoxs[0]._id
             console.log(messageBoxId)
           }
+          thisComp.stop();
         }
       });
     }
-    else{
-      Tracker.autorun(function() {
+    else if(userRole() == 'shopOwner'){
+      Tracker.autorun(function(thisComp) {
         if (subscription.ready()) {
           //return array of object that have same userId
           const messageBoxs = MessageBoxs.find({customer:receiveId, shopOwner:Meteor.userId()}).map(function (doc) {
@@ -74,16 +79,21 @@ const handleUpsert = () => {
           })
           console.log(messageBoxs);
           if(messageBoxs.length==0){
-            upsertBox.customer = receiveId
-            upsertBox.shopOwner = Meteor.userId()
-            upsertBox.date = new Date().toISOString()
-            upsertBox.statusCustomer = "false"
-            upsertBox.statusShopOwner = "read"
+            const upsertBox = {
+              customer: receiveId,
+              customerName: receiveName,
+              shopOwner: Meteor.userId(),
+              shopOwnerName: userName(),
+              date: new Date().toISOString(),
+              statusCustomer: "false",
+              statusShopOwner: "read",
+            };
 
             upsertMessageBox.call(upsertBox, (error, response) => {
               if (error) {
                 console.log('danger');
               } else {
+                component.messageBoxEditorForm.reset();
                 console.log('success');
               }
             });
@@ -92,6 +102,7 @@ const handleUpsert = () => {
             messageBoxId = messageBoxs[0]._id
             console.log(messageBoxId)
           }
+          thisComp.stop();
         }
       });
     }
@@ -106,12 +117,12 @@ const handleUpsert = () => {
     console.log("hellllo2")
     if(userRole() == 'customer'){
       messageBoxs = MessageBoxs.find({customer:Meteor.userId(), shopOwner:receiveId}).fetch()
-      console.log(messageBoxs)
+      console.log(userName())
       messageBoxId = messageBoxs[0]._id
       const { doc } = component.props;
       const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
       const upsert = {
-        title: document.querySelector('[name="title"]').value.trim(),
+        title: userName(),
         body: document.querySelector('[name="body"]').value.trim(),
         userId:Meteor.userId(),
         date: new Date().toISOString(),
@@ -126,21 +137,22 @@ const handleUpsert = () => {
         if (error) {
           Bert.alert(error.reason, 'danger');
         } else {
-          MessageBoxs.update({_id : messageBoxId},{$set:{date : new Date().toISOString(), statusCustomer : 'false',}});
           component.messageEditorForm.reset();
           Bert.alert(confirmation, 'success');
-          component.props.history.push(`/messages/${response.insertedId || doc._id}`);
+          component.props.history.push(`/messageBoxs/${messageBoxId}`);
         }
       });
+
+      MessageBoxs.update({_id : messageBoxId},{$set:{date : new Date().toISOString(), statusShopOwner : 'false',statusCustomer : 'read',}});
     }
-    else{
+    else if(userRole() == 'shopOwner'){
       messageBoxs = MessageBoxs.find({customer:receiveId, shopOwner:Meteor.userId()}).fetch()
       console.log(messageBoxs)
       messageBoxId = messageBoxs[0]._id
       const { doc } = component.props;
       const confirmation = doc && doc._id ? 'Message updated!' : 'Message added!';
       const upsert = {
-        title: document.querySelector('[name="title"]').value.trim(),
+        title: userName(),
         body: document.querySelector('[name="body"]').value.trim(),
         userId:Meteor.userId(),
         date: new Date().toISOString(),
@@ -155,12 +167,13 @@ const handleUpsert = () => {
         if (error) {
           Bert.alert(error.reason, 'danger');
         } else {
-          MessageBoxs.update({_id : messageBoxId},{$set:{date : new Date().toISOString(), statusShopOwner : 'false',}});
           component.messageEditorForm.reset();
           Bert.alert(confirmation, 'success');
-          component.props.history.push(`/messages/${response.insertedId || doc._id}`);
+          component.props.history.push(`/messageBoxs/${messageBoxId}`);
         }
       });
+
+      MessageBoxs.update({_id : messageBoxId},{$set:{date : new Date().toISOString(), statusShopOwner : 'read', statusCustomer : 'false',}});
     }
   }
 

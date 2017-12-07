@@ -6,13 +6,13 @@ const MessageBoxs = new Mongo.Collection('MessageBoxs');
 export default MessageBoxs;
 
 MessageBoxs.allow({
-  insert: () => true,
+  insert: () => false,
   update: () => true,
   remove: () => false,
 });
 
 MessageBoxs.deny({
-  insert: () => false,
+  insert: () => true,
   update: () => false,
   remove: () => true,
 });
@@ -22,7 +22,15 @@ MessageBoxs.schema = new SimpleSchema({
     type: String,
     label: 'The title of the document.',
   },
+  customerName: {
+    type: String,
+    label: 'The title of the document.',
+  },
   shopOwner: {
+    type: String,
+    label: 'The body of the document.',
+  },
+  shopOwnerName: {
     type: String,
     label: 'The body of the document.',
   },
@@ -44,7 +52,9 @@ MessageBoxs.attachSchema(MessageBoxs.schema);
 
 Factory.define('messageBox', MessageBoxs, {
   customer: () => 'Factory Customer',
+  customerName: () => 'Factory CustomerName',
   shopOwner: () => 'Factory ShopOwner',
+  shopOwnerName: () => 'Factory ShopOwnerName',
   date: () => 'Factory creationDate', //here
   status: () => 'Factory status', //here
 });

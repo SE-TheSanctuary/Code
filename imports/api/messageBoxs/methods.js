@@ -10,7 +10,9 @@ export const upsertMessageBox = new ValidatedMethod({
   validate: new SimpleSchema({
     _id: { type: String, optional: true },
     customer: { type: String, optional: true },
+    customerName: { type: String, optional: true },
     shopOwner: { type: String, optional: true },
+    shopOwnerName: { type: String, optional: true },
     date: { type: String, optional: true },
     statusCustomer: { type: String, optional: true },
     statusShopOwner: { type: String, optional: true },

@@ -28,7 +28,7 @@ const handleUpsert = () => {
     } else {
       component.reviewEditorForm.reset();
       Bert.alert(confirmation, 'success');
-      component.props.history.push(`/reviews/${response.insertedId || doc._id}`);
+      component.props.history.push(`/shops/${reviewId}`);
     }
   });
 };
