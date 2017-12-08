@@ -25,10 +25,8 @@ const composer = (params, onData) => {
     {sort.set({ date: -1 });}
     else if(sortKey=='oldest')
     {sort.set({ date: 1 });}
-    else if(sortKey=='highest')
-    {sort.set({ price: -1 });}
-    else if(sortKey=='lowest')
-    {sort.set({ price: 1 });}
+    else if(sortKey=='name')
+    {sort.set({ title: -1 });}
   }
   else{
     sort.set({ date: -1 });

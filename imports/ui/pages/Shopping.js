@@ -28,8 +28,7 @@ const Shops = ({ history }) => (
                     <FormControl componentClass="select" name="sort" placeholder="date">
                       <option value="newest">newest date</option>
                       <option value="oldest">oldest date</option>
-                      <option value="highest">highest price</option>
-                      <option value="lowest">lowest pricer</option>
+                      <option value="name">name</option>
                     </FormControl>
                     <InputGroup.Addon>Sort by</InputGroup.Addon>
                 </InputGroup>

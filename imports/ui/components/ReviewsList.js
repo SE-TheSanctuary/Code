@@ -8,7 +8,7 @@ const handleNav = (history, _id) => {
 const ReviewsList = ({ history, reviews }) => (
   reviews.length > 0 ? <ListGroup className="ReviewsList">
     {reviews.map(({ _id, title,detail1 ,userId,date,star}) => (
-      <ListGroupItem key={ _id } onClick={ () => handleNav(history, _id) }>
+      <ListGroupItem key={ _id }>
         <Row>
           <Col xs={ 3 } md={1} sm={ 2 }>
             <div className="circle">{star}</div>
