@@ -21,18 +21,22 @@ const composer = (params, onData) => {
 
   if (typeof sortKey !== 'undefined'){
     console.log(sortKey);
-    if(sortKey=='date')
+    if(sortKey=='newest')
+    {sort.set({ date: -1 });}
+    else if(sortKey=='oldest')
     {sort.set({ date: 1 });}
-    else if(sortKey=='price')
+    else if(sortKey=='highest')
+    {sort.set({ price: -1 });}
+    else if(sortKey=='lowest')
     {sort.set({ price: 1 });}
   }
   else{
-
+    sort.set({ date: -1 });
 
   }
 
   const subscription = Meteor.subscribe('shops.list');
-  
+
   if (subscription.ready()) {
     let shops = Shops.find({petType:filterKey}, {sort:sort.get()}).fetch();
     if(filterKey=="all"){

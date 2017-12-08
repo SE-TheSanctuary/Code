@@ -26,10 +26,10 @@ const Shops = ({ history }) => (
             <FormGroup controlId="formControlsSelect">
                 <InputGroup>
                     <FormControl componentClass="select" name="sort" placeholder="date">
-                      <option value="date">date</option>
-                      <option value="location">location</option>
-                      <option value="price">price</option>
-                      <option value="popular">popular</option>
+                      <option value="newest">newest date</option>
+                      <option value="oldest">oldest date</option>
+                      <option value="highest">highest price</option>
+                      <option value="lowest">lowest pricer</option>
                     </FormControl>
                     <InputGroup.Addon>Sort by</InputGroup.Addon>
                 </InputGroup>
@@ -42,6 +42,7 @@ const Shops = ({ history }) => (
                       <option value="all">all</option>
                       <option value="dog">dog</option>
                       <option value="cat">cat</option>
+                      <option value="bird">bird</option>
                       <option value="other">other</option>
                     </FormControl>
                     <InputGroup.Addon>Filter&emsp;</InputGroup.Addon>
