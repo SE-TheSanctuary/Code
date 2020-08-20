@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "bcrypt": "^0.8.7",
+    "bcrypt": "^5.0.0",
     "bootstrap": "^3.3.7",
     "google-map-react": "^0.25.0",
     "jquery": "^2.2.4",
